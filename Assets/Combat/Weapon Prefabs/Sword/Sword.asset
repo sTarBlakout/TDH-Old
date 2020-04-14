@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29d3b1ca81fde74fb65f8fa0a71fbcc, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 1009624335644192096, guid: 3cc8022968225f648b58854520fdf212,
+    type: 3}
+  weaponBackPrefab: {fileID: 8865352985785456729, guid: 2193b3492c7bdcd49be6045162a8de8a,
+    type: 3}
+  weaponBackCoverPrefab: {fileID: 1241252054098534, guid: cdcd31ac69744ec4d928e5d032e933a4,
+    type: 3}
+  animatorOverride: {fileID: 22100000, guid: d771ffb7df775c346b5f97907d6fef83, type: 2}
+  hasTrail: 1
+  weaponType: 1
+  damage: 35
+  attackSpeed: 1
+  hitPower: 2
+  rangeX: 2
+  rangeZ: 2
+  attackSeries:
+  - id: 1
+    attackSequence: 0100000003000000050000000c0000000200000004000000060000000b000000
+  damageAreaPrefab: {fileID: 724689303386092926, guid: 2e4885fc4e3e60a44832792ffa698ca5,
+    type: 3}
+  cameraPowerNoisePreset: {fileID: 0}
+  moveParticlePref: {fileID: 1655457316006132, guid: e89cac94b3d07a64682a79615fdf7223,
+    type: 3}
+  chargingParticlePref: {fileID: 1651496584221570, guid: 896754aa71c949344a6f75beb219a15d,
+    type: 3}
+  splashParticlePref: {fileID: 0}
+  effectOvertimePrefab: {fileID: 0}
+  chargeTime: 1
+  timeOffsetBeforeMove: 0.2
+  powerfullDamage: 50
+  powerfullHit: 6
+  powerfullCooldown: 3
+  cameraNoisePreset: {fileID: 11400000, guid: 9355f1766da466a44b7f19f8c4256ecd, type: 2}
+  shackingAmp: 0.2
+  shackingFreq: 0.2
+  distChanging: 0.5

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29d3b1ca81fde74fb65f8fa0a71fbcc, type: 3}
+  m_Name: Unarmed
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 1452006170209357203, guid: 742d9c373cd2a81419e4028fef1fc2fb,
+    type: 3}
+  weaponBackPrefab: {fileID: 0}
+  weaponBackCoverPrefab: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: b01ac68e69d9429459dc67b40c7dbe4a, type: 2}
+  weaponType: 0
+  damage: 20
+  attackSpeed: 1.5
+  hitPower: 3
+  rangeX: 1
+  rangeZ: 0.6
+  attackSeries:
+  - id: 1
+    attackSequence: 0100000006000000030000000c0000000400000002000000050000000b000000
+  - id: 2
+    attackSequence: 0400000002000000050000000b0000000100000006000000030000000c000000
+  cameraNoisePreset: {fileID: 11400000, guid: 9355f1766da466a44b7f19f8c4256ecd, type: 2}
+  shackingAmp: 0.15
+  shackingFreq: 0.15
+  distChanging: 0.3

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f33ebca774c544db9d9c1df8817036, type: 3}
+  m_Name: HandFlame
+  m_EditorClassIdentifier: 
+  spellPrefab: {fileID: 4660430353831532725, guid: 2b4c183db34694d49b21608c8a1d3ca1,
+    type: 3}
+  animatorOverride: {fileID: 22100000, guid: daf18597cffa1ae4eaf2df757e784c26, type: 2}
+  timeToInstantiateSpell: 0
+  damage: 25
+  selfDamage: 0.2
+  hitPower: 5
+  cooldown: 5
+  spellType: 0
+  cameraNoisePreset: {fileID: 11400000, guid: 205c3085dad572e468d9043b6d0144af, type: 2}
+  amplitude: 1.2
+  frequency: 1.2
+  damageRate: 0.5
+  maxTimeUsing: 2
+  radius: 1

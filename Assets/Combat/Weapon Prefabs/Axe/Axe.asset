@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29d3b1ca81fde74fb65f8fa0a71fbcc, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 1586301124448702, guid: 181c5c49a962f96468635ea191e01184,
+    type: 3}
+  weaponBackPrefab: {fileID: 1586301124448702, guid: 4655810819e32bf45b4b918764f1dac4,
+    type: 3}
+  weaponBackCoverPrefab: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: d4b542df694a2d2479c0e9fa86c3b2d8, type: 2}
+  hasTrail: 1
+  weaponType: 2
+  damage: 50
+  attackSpeed: 1.5
+  hitPower: 5
+  rangeX: 1.5
+  rangeZ: 1.5
+  attackSeries:
+  - id: 1
+    attackSequence: 0600000002000000030000000b000000040000000200000006000000050000000c000000
+  damageAreaPrefab: {fileID: 4580395560891571011, guid: 63743be52f0ebd44780b8902e23da5b6,
+    type: 3}
+  cameraPowerNoisePreset: {fileID: 0}
+  moveParticlePref: {fileID: 1795988735297500, guid: 60f3afeafd623204189472f1eb25a751,
+    type: 3}
+  chargingParticlePref: {fileID: 1364047623828616, guid: 664b5b047067a104e9dc68ce4bf512eb,
+    type: 3}
+  splashParticlePref: {fileID: 1584090095463384, guid: a6b734b721870624cb3bce547fd823f8,
+    type: 3}
+  effectOvertimePrefab: {fileID: 1223528346287448, guid: f8286e1c757a38644af11e505b05a692,
+    type: 3}
+  chargeTime: 1
+  timeOffsetBeforeMove: 0.3
+  powerfullDamage: 100
+  powerfullHit: 10
+  powerfullCooldown: 5
+  cameraNoisePreset: {fileID: 11400000, guid: 9355f1766da466a44b7f19f8c4256ecd, type: 2}
+  shackingAmp: 0.25
+  shackingFreq: 0.25
+  distChanging: 0.5
