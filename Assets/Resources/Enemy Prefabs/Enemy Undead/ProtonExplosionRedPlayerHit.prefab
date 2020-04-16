@@ -9644,7 +9644,6 @@ GameObject:
   - component: {fileID: 4555173498094594}
   - component: {fileID: 198975998863585058}
   - component: {fileID: 199098062437887734}
-  - component: {fileID: 2475622240611037459}
   m_Layer: 0
   m_Name: ProtonExplosionRedPlayerHit
   m_TagString: Untagged
@@ -14451,19 +14450,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &2475622240611037459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533753553117432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fc8a5f8cbbce1d4d81b63523315060e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToStop: 0.1
 --- !u!1 &1562629383491420
 GameObject:
   m_ObjectHideFlags: 0

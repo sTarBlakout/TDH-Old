@@ -328,7 +328,7 @@ namespace TDH.Player
 
         public void PowerfullAttack()
         {
-            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown || !currentWeapon.HasPowerfullAttack()) 
+            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown) 
             {
                 return;
             }

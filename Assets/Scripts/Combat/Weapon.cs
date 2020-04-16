@@ -20,7 +20,6 @@ namespace TDH.Combat
         [SerializeField] float rangeX = 1f, rangeZ = 1f;
         [SerializeField] AttackSeries[] attackSeries;
         [Header("Powerfull Attack")]
-        [SerializeField] bool hasPowerfullAttack = true;
         [SerializeField] GameObject damageAreaPrefab;
         [SerializeField] NoiseSettings cameraPowerNoisePreset;
         [SerializeField] GameObject moveParticlePref;
@@ -191,11 +190,6 @@ namespace TDH.Combat
         public float GetPowerfullCooldown()
         {
             return powerfullCooldown;
-        }
-
-        public bool HasPowerfullAttack()
-        {
-            return hasPowerfullAttack;
         }
     }
 
