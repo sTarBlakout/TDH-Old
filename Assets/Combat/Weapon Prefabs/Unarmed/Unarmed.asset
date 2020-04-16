@@ -17,9 +17,10 @@ MonoBehaviour:
   weaponBackPrefab: {fileID: 0}
   weaponBackCoverPrefab: {fileID: 0}
   animatorOverride: {fileID: 22100000, guid: b01ac68e69d9429459dc67b40c7dbe4a, type: 2}
+  hasTrail: 0
   weaponType: 0
   damage: 20
-  attackSpeed: 1.5
+  attackSpeed: 1
   hitPower: 3
   rangeX: 1
   rangeZ: 0.6
@@ -28,6 +29,18 @@ MonoBehaviour:
     attackSequence: 0100000006000000030000000c0000000400000002000000050000000b000000
   - id: 2
     attackSequence: 0400000002000000050000000b0000000100000006000000030000000c000000
+  hasPowerfullAttack: 0
+  damageAreaPrefab: {fileID: 0}
+  cameraPowerNoisePreset: {fileID: 0}
+  moveParticlePref: {fileID: 0}
+  chargingParticlePref: {fileID: 0}
+  splashParticlePref: {fileID: 0}
+  effectOvertimePrefab: {fileID: 0}
+  chargeTime: 0
+  timeOffsetBeforeMove: 0
+  powerfullDamage: 0
+  powerfullHit: 0
+  powerfullCooldown: 0
   cameraNoisePreset: {fileID: 11400000, guid: 9355f1766da466a44b7f19f8c4256ecd, type: 2}
   shackingAmp: 0.15
   shackingFreq: 0.15
