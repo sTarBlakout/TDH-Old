@@ -12,6 +12,15 @@ namespace TDH.Player
         [SerializeField] float hitPower;
         [SerializeField] float barrierPower;
 
+        private void OnTriggerStay(Collider other) 
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.gameObject.GetComponent<EnemyBehaviorAI>().SetHitVelocity(-other.transform.forward, 1);
+                other.gameObject.GetComponent<Health>().DecreaseHealth(0f);
+            }    
+        }
+
         public GameObject GetHitParticle()
         {
             return hitParticle;

@@ -440,7 +440,12 @@ namespace TDH.EnemyAI
                 else
                 {
                     PlayerShield shield = player.transform.Find("ShieldCenter").GetComponent<PlayerShield>();
-                    Instantiate(shield.GetHitParticle(), this.transform.Find("Hit_Point").transform.position, Quaternion.identity);
+                    Vector3 spawnPosition = new Vector3(
+                        0f, 
+                        Random.Range(0.5f, 0.6f), 
+                        attackDistance - 0.6f
+                    );
+                    Instantiate(shield.GetHitParticle(), transform.TransformPoint(spawnPosition), Quaternion.identity);
                     SetHitVelocity(-this.transform.forward, shield.GetHitPower());
                     this.transform.GetComponent<Health>().DecreaseHealth(shield.GetDamage());
                 }
