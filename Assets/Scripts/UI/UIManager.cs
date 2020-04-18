@@ -13,6 +13,9 @@ namespace TDH.UI
         [SerializeField] GameObject inventoryButton = null;
         [SerializeField] GameObject sunLightButton = null;
 
+        [SerializeField] GameObject controlPanel = null;
+        [SerializeField] GameObject meditationPanel = null;
+ 
         private Image powerfullAtkCooldownImg;
         private Image spellCastCooldownImg;
         private Image shieldCooldownImg;
@@ -52,8 +55,7 @@ namespace TDH.UI
         private void Start() 
         {
             DeactivateActionSlider();
-            ActivateButton(4, false);
-            ActivateButton(5, false);
+            ActivateButtonControlPanel(4, false);
 
             powerfullAtkCooldownImg.enabled = false;
             spellCastCooldownImg.enabled = false;
@@ -162,7 +164,22 @@ namespace TDH.UI
             healthBarText.text = value.ToString("0") + "/" + initialHealth.ToString("0");
         }
 
-        public void ActivateButton(int id, bool activate)
+        public void ActivatePanel(int id, bool activate)
+        {
+            switch(id)
+            {
+                case 1:
+                    controlPanel.SetActive(activate);
+                    break;
+                case 2:
+                    meditationPanel.SetActive(activate);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void ActivateButtonControlPanel(int id, bool activate)
         {
             switch(id)
             {
@@ -176,9 +193,6 @@ namespace TDH.UI
                     shieldButton.SetActive(activate);
                     break;
                 case 4:
-                    inventoryButton.SetActive(activate);
-                    break;
-                case 5:
                     sunLightButton.SetActive(activate);
                     break;
                 default:

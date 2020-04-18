@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using TDH.UI;
 
 namespace TDH.Player
 {
@@ -25,6 +26,7 @@ namespace TDH.Player
         private NavMeshAgent navMeshAgent;
         private Animator animator;
         private PlayerFighter fighter;
+        private UIManager managerUI;
 
     #region Unity Methods
 
@@ -33,6 +35,7 @@ namespace TDH.Player
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             fighter = GetComponent<PlayerFighter>();
+            managerUI = GameObject.Find("UI").GetComponent<UIManager>();
 
             fighter.OnAttackStarted += StartAttack;
             fighter.OnAttackFinished += StopAttack;
@@ -98,6 +101,8 @@ namespace TDH.Player
         {
             RestrictMovement();
             animator.SetTrigger("StartSunMeditation");
+            managerUI.ActivatePanel(1, false);
+            managerUI.ActivatePanel(2, true);
         }
 
     #endregion

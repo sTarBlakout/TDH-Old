@@ -35,7 +35,7 @@ namespace TDH.Environment
             if (other.gameObject.CompareTag("Player"))
             {
                 healPlayer = true;
-                managerUI.ActivateButton(5, true);
+                managerUI.ActivateButtonControlPanel(4, true);
             }    
         }
 
@@ -44,7 +44,7 @@ namespace TDH.Environment
             if (other.gameObject.CompareTag("Player"))
             {
                 healPlayer = false;
-                managerUI.ActivateButton(5, false);
+                managerUI.ActivateButtonControlPanel(4, false);
             } 
         }
     }
