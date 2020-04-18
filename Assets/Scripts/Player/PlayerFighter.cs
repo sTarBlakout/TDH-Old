@@ -333,7 +333,7 @@ namespace TDH.Player
                 return;
             }
 
-            mover.StopPlayer();
+            mover.RestrictMovement();
 
             remainingTimeToHideWeapon = Time.time + timeToHideWeapon;
             remainingTimeToStopAttackSeries = Time.time + timeToStopAttackSeries;
@@ -570,7 +570,7 @@ namespace TDH.Player
             yield return new WaitForSeconds(0.5f);
             if (!mover.IsNavMeshAgentEnabled())
             {
-                mover.UnstopPlayer();
+                mover.AllowMove();
             }
             if (chargeParticle != null && !isAttackGoing)
             {

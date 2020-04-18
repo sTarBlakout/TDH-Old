@@ -35,7 +35,7 @@ namespace TDH.Environment
             if (other.gameObject.CompareTag("Player"))
             {
                 healPlayer = true;
-                managerUI.ActivateInventoryButton(true);
+                managerUI.ActivateButton(5, true);
             }    
         }
 
@@ -44,7 +44,7 @@ namespace TDH.Environment
             if (other.gameObject.CompareTag("Player"))
             {
                 healPlayer = false;
-                managerUI.ActivateInventoryButton(false);
+                managerUI.ActivateButton(5, false);
             } 
         }
     }

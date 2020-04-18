@@ -11,6 +11,7 @@ namespace TDH.UI
         [SerializeField] GameObject spellCastButton = null;
         [SerializeField] GameObject shieldButton = null;
         [SerializeField] GameObject inventoryButton = null;
+        [SerializeField] GameObject sunLightButton = null;
 
         private Image powerfullAtkCooldownImg;
         private Image spellCastCooldownImg;
@@ -51,7 +52,8 @@ namespace TDH.UI
         private void Start() 
         {
             DeactivateActionSlider();
-            ActivateInventoryButton(false);
+            ActivateButton(4, false);
+            ActivateButton(5, false);
 
             powerfullAtkCooldownImg.enabled = false;
             spellCastCooldownImg.enabled = false;
@@ -160,24 +162,28 @@ namespace TDH.UI
             healthBarText.text = value.ToString("0") + "/" + initialHealth.ToString("0");
         }
 
-        public void ActivateInventoryButton(bool activate)
+        public void ActivateButton(int id, bool activate)
         {
-            inventoryButton.SetActive(activate);
-        }
-
-        public void ActivateSpellButton(bool activate)
-        {
-            spellCastButton.SetActive(activate);
-        }
-
-        public void ActivatePwrAtkButton(bool activate)
-        {
-            powerfullAtkButton.SetActive(activate);
-        }
-
-        public void ActivateShieldButton(bool activate)
-        {
-            shieldButton.SetActive(activate);
+            switch(id)
+            {
+                case 1:
+                    powerfullAtkButton.SetActive(activate);
+                    break;
+                case 2:
+                    spellCastButton.SetActive(activate);
+                    break;
+                case 3:
+                    shieldButton.SetActive(activate);
+                    break;
+                case 4:
+                    inventoryButton.SetActive(activate);
+                    break;
+                case 5:
+                    sunLightButton.SetActive(activate);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void StartCooldown(CooldownType type, float seconds)

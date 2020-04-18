@@ -73,12 +73,14 @@ namespace TDH.Player
         public void AllowMove()
         {
             navMeshAgent.enabled = true;
+            navMeshAgent.velocity = Vector3.zero;
             isAllowedToMove = true;
         }
 
         public void RestrictMovement()
         {
             isAllowedToMove = false;
+            navMeshAgent.velocity = Vector3.zero;
             navMeshAgent.enabled = false;
         }
 
@@ -87,21 +89,15 @@ namespace TDH.Player
             navMeshAgent.velocity = transform.forward * vel;
         }
 
-        public void StopPlayer()
-        {  
-            navMeshAgent.velocity = Vector3.zero;
-            navMeshAgent.enabled = false;
-        }
-
-        public void UnstopPlayer()
-        {  
-            navMeshAgent.enabled = true;
-            navMeshAgent.velocity = Vector3.zero;
-        }
-
         public bool IsNavMeshAgentEnabled()
         {
             return navMeshAgent.enabled;
+        }
+
+        public void StartMeditate()
+        {
+            RestrictMovement();
+            animator.SetTrigger("StartSunMeditation");
         }
 
     #endregion
