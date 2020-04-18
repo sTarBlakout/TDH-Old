@@ -10,6 +10,7 @@ namespace TDH.UI
         [SerializeField] GameObject powerfullAtkButton = null;
         [SerializeField] GameObject spellCastButton = null;
         [SerializeField] GameObject shieldButton = null;
+        [SerializeField] GameObject inventoryButton = null;
 
         private Image powerfullAtkCooldownImg;
         private Image spellCastCooldownImg;
@@ -50,6 +51,7 @@ namespace TDH.UI
         private void Start() 
         {
             DeactivateActionSlider();
+            ActivateInventoryButton(false);
 
             powerfullAtkCooldownImg.enabled = false;
             spellCastCooldownImg.enabled = false;
@@ -156,6 +158,11 @@ namespace TDH.UI
         {   
             healthBarSlider.value = value / initialHealth;
             healthBarText.text = value.ToString("0") + "/" + initialHealth.ToString("0");
+        }
+
+        public void ActivateInventoryButton(bool activate)
+        {
+            inventoryButton.SetActive(activate);
         }
 
         public void StartCooldown(CooldownType type, float seconds)

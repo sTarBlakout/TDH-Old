@@ -1,4 +1,5 @@
 ﻿using TDH.Player;
+using TDH.UI;
 using UnityEngine;
 
 namespace TDH.Environment
@@ -12,10 +13,13 @@ namespace TDH.Environment
         private GameObject player;
         private PlayerLightController lightController;
 
+        private UIManager managerUI = null;
+
         private void Awake() 
         {
             player = GameObject.FindGameObjectWithTag("Player");    
             lightController = player.GetComponent<PlayerLightController>();
+            managerUI = GameObject.Find("UI").GetComponent<UIManager>();
         }
 
         private void FixedUpdate() 
@@ -31,6 +35,7 @@ namespace TDH.Environment
             if (other.gameObject.CompareTag("Player"))
             {
                 healPlayer = true;
+                managerUI.ActivateInventoryButton(true);
             }    
         }
 
@@ -39,6 +44,7 @@ namespace TDH.Environment
             if (other.gameObject.CompareTag("Player"))
             {
                 healPlayer = false;
+                managerUI.ActivateInventoryButton(false);
             } 
         }
     }
