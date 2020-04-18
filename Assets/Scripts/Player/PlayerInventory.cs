@@ -60,10 +60,6 @@ namespace TDH.Player
 
             foreach (Weapon weapon in weaponsArray)
             {
-                if (eqquipedWeapon == null)
-                {
-                    EquipWeapon(weapon);
-                }
                 weapons.Add(i, weapon);
                 i++;
             }
@@ -72,10 +68,6 @@ namespace TDH.Player
 
             foreach (Spell spell in spellsArray)
             {
-                if (eqquipedSpell == null)
-                {
-                    EquipSpell(spell);
-                }
                 spells.Add(i, spell);
                 i++;
             }

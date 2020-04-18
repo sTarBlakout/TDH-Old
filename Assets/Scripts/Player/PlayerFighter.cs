@@ -598,7 +598,10 @@ namespace TDH.Player
             
             currentWeapon.GetAnimatorController().GetOverrides(overridesWeapon);
             currentWeapon.GetAnimatorController().GetOverrides(overridesMixed);
-            currentSpell.GetAnimatorController().GetOverrides(overridesSpell);
+            if (currentSpell != null)
+            {
+                currentSpell.GetAnimatorController().GetOverrides(overridesSpell);
+            }
 
             for (int i = 0; i < overridesCount; i++)
             {
@@ -606,9 +609,12 @@ namespace TDH.Player
                 {
                     overridesMixed[i] = overridesWeapon[i];
                 }
-                else if (overridesSpell[i].Value != null)
+                else if (overridesSpell.Any())
                 {
-                    overridesMixed[i] = overridesSpell[i];
+                    if (overridesSpell[i].Value != null)
+                    {
+                        overridesMixed[i] = overridesSpell[i];
+                    }
                 }
             }
 

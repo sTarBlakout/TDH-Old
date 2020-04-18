@@ -46,6 +46,7 @@ namespace TDH.Player
 
         private void Update() 
         {
+            if (fighter.GetCurrentSpell() == null) return;
             if (fighter.GetCurrentSpell().GetSpellType() != 0 || boxCollider.enabled == false)
             {
                 return;
@@ -63,6 +64,7 @@ namespace TDH.Player
 
         private void FixedUpdate() 
         {
+            if (fighter.GetCurrentSpell() == null) return;
             if (fighter.GetCurrentSpell().GetSpellType() != 0 || boxCollider.enabled == false)
             {
                 return;
