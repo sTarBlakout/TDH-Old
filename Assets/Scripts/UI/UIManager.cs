@@ -165,6 +165,21 @@ namespace TDH.UI
             inventoryButton.SetActive(activate);
         }
 
+        public void ActivateSpellButton(bool activate)
+        {
+            spellCastButton.SetActive(activate);
+        }
+
+        public void ActivatePwrAtkButton(bool activate)
+        {
+            powerfullAtkButton.SetActive(activate);
+        }
+
+        public void ActivateShieldButton(bool activate)
+        {
+            shieldButton.SetActive(activate);
+        }
+
         public void StartCooldown(CooldownType type, float seconds)
         {
             switch (type)
