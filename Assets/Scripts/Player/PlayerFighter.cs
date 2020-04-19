@@ -568,7 +568,7 @@ namespace TDH.Player
             isAttackGoing = false;
             calledFinishAttack = false;
             yield return new WaitForSeconds(0.5f);
-            if (!mover.IsNavMeshAgentEnabled())
+            if (!mover.IsNavMeshAgentEnabled() && !isBlocking)
             {
                 mover.AllowMove();
             }
