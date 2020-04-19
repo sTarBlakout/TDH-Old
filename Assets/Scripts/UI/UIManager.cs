@@ -54,6 +54,7 @@ namespace TDH.UI
 
         private void Start() 
         {
+            ActivatePanel(1);
             DeactivateActionSlider();
             ActivateButtonControlPanel(4, false);
 
@@ -164,15 +165,18 @@ namespace TDH.UI
             healthBarText.text = value.ToString("0") + "/" + initialHealth.ToString("0");
         }
 
-        public void ActivatePanel(int id, bool activate)
+        public void ActivatePanel(int id)
         {
+            controlPanel.SetActive(false);
+            meditationPanel.SetActive(false);
+
             switch(id)
             {
                 case 1:
-                    controlPanel.SetActive(activate);
+                    controlPanel.SetActive(true);
                     break;
                 case 2:
-                    meditationPanel.SetActive(activate);
+                    meditationPanel.SetActive(true);
                     break;
                 default:
                     break;

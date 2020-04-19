@@ -28,6 +28,12 @@ namespace TDH.Player
         private PlayerFighter fighter;
         private UIManager managerUI;
 
+        private bool isForceAction = false;
+        private bool isForceMove = false, isForceRotate = false;
+        private string forceMoveEndTriggerName = null;
+        private Quaternion forceRotationTarget;
+        private Vector3 forceMoveTarget;
+
     #region Unity Methods
 
         void Awake()
@@ -62,6 +68,11 @@ namespace TDH.Player
             }
             MovementControl();
             UpdateAnimator();
+
+            if (isForceAction)
+            {
+                ForceMoveAction();
+            }
         }
 
     #endregion
@@ -97,9 +108,48 @@ namespace TDH.Player
             return navMeshAgent.enabled;
         }
 
+        public void ForceMove(Vector3 position, Quaternion rotation, string moveEndAnimTrigger)
+        {
+            RestrictMovement();
+            forceMoveTarget = position;
+            forceRotationTarget = rotation;
+            forceMoveEndTriggerName = moveEndAnimTrigger;
+            isForceMove = true;
+            isForceRotate = true;
+            isForceAction = true;
+        }
+
     #endregion
 
     #region Private Methods
+
+        private void ForceMoveAction()
+        {
+            if (isForceMove || isForceRotate)
+            {
+                if (transform.position != forceMoveTarget && isForceMove)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, forceMoveTarget, 0.05f);
+                }
+                else
+                {
+                    isForceMove = false;
+                }
+                if (Quaternion.Angle(transform.rotation, forceRotationTarget) > 15f && isForceRotate)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, forceRotationTarget, 5f);
+                }
+                else
+                {
+                    isForceRotate = false;
+                }
+            }
+            else
+            {
+                isForceAction = false;
+                animator.SetTrigger(forceMoveEndTriggerName);
+            }
+        }
 
         private void StartPowerAttack()
         {

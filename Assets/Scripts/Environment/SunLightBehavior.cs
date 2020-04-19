@@ -2,6 +2,7 @@
 using TDH.UI;
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 namespace TDH.Environment
 {
@@ -18,6 +19,11 @@ namespace TDH.Environment
         private CinemachineTrackedDolly virtualCameraTrackedDolly = null;
         private bool isCameraActive = false;
 
+        private Transform lookAtPoint = null;
+        private Transform playerStandPosition = null;
+
+        private Coroutine activateCameraThreshold = null;
+
         private void Awake() 
         {
             player = GameObject.FindGameObjectWithTag("Player");    
@@ -29,6 +35,8 @@ namespace TDH.Environment
                 virtualCameraTrackedDolly = virtualCameraGO.GetComponent<CinemachineVirtualCamera>()
                     .GetCinemachineComponent<CinemachineTrackedDolly>();
             }
+            lookAtPoint = transform.Find("LookAtPoint");
+            playerStandPosition = transform.Find("PlayerStandPosition");
         }
 
         private void Start() 
@@ -44,10 +52,38 @@ namespace TDH.Environment
             }
         }
 
+        private IEnumerator ActivateCameraThreshold()
+        {
+            yield return new WaitForSeconds(2f);
+            isCameraActive = true;
+        }
+
         public void ActivateVirtCamera(bool activate)
         {
             virtualCameraGO.SetActive(activate);
-            isCameraActive = true;
+            if (activate)
+            {
+                activateCameraThreshold = StartCoroutine(ActivateCameraThreshold());
+            }
+            else
+            {   
+                if (activateCameraThreshold != null)
+                {
+                    StopCoroutine(activateCameraThreshold);
+                    activateCameraThreshold = null;
+                }
+                isCameraActive = false;
+            }
+        }
+
+        public void SetLookAtPointPosition(Vector3 pos)
+        {
+            lookAtPoint.position = pos;
+        }
+
+        public Transform GetPlayerStandPosition()
+        {
+            return playerStandPosition;
         }
     }
 }

@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb066cba16b12749934d1047ea7c408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHandTransform: {fileID: 5305551946095034527}
 --- !u!1 &5307612265631691159
 GameObject:
   m_ObjectHideFlags: 0
