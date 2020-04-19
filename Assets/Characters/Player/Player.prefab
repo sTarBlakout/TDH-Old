@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 5326418177864688132}
   - component: {fileID: 1883954841}
   - component: {fileID: 4313907085536776299}
+  - component: {fileID: 6270085214751120531}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1016,6 +1017,18 @@ MonoBehaviour:
   minMaxIntensityArea: {x: 25, y: 30}
   minMaxIntensityCharacter: {x: 9, y: 10}
   minMaxTimeThreshold: {x: 0.05, y: 0.1}
+--- !u!114 &6270085214751120531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307610071795776725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb066cba16b12749934d1047ea7c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5307612265631691159
 GameObject:
   m_ObjectHideFlags: 0
@@ -36635,8 +36648,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 5314171745355523979}
   m_AABB:
-    m_Center: {x: 0.046398073, y: -1.3814615, z: 0.007351607}
-    m_Extent: {x: 0.35124195, y: 1.4261011, z: 0.11216362}
+    m_Center: {x: 0.000000029802322, y: 0.84402436, z: -0.22727118}
+    m_Extent: {x: 0.36620182, y: 0.6927815, z: 0.1494913}
   m_DirtyAABB: 0
 --- !u!183 &3609366941541916965
 Cloth:

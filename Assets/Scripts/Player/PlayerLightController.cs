@@ -87,11 +87,11 @@ namespace TDH.Player
             }
         }
 
-        public void Heal(float amount)
+        public void HealFull()
         {
             if (isDead) return;
             if (currentLightHealth == initialLightHealth) return;
-            currentLightHealth = Mathf.Clamp(currentLightHealth + amount, 0f, initialLightHealth);
+            currentLightHealth = initialLightHealth;
             managerUI.UpgradeHealthBar(currentLightHealth);
         }
 

@@ -97,14 +97,6 @@ namespace TDH.Player
             return navMeshAgent.enabled;
         }
 
-        public void StartMeditate()
-        {
-            RestrictMovement();
-            animator.SetTrigger("StartSunMeditation");
-            managerUI.ActivatePanel(1, false);
-            managerUI.ActivatePanel(2, true);
-        }
-
     #endregion
 
     #region Private Methods
