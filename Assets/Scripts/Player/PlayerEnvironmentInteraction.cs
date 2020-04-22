@@ -37,6 +37,7 @@ namespace TDH.Player
                     sunLight.SetLookAtPointPosition(leftHandTransform.position);
                     sunLight.ActivateVirtCamera(true);
                     managerUI.ActivatePanel(2);
+                    sunLight.ActivateParticlesMeditation(true);
                 }
             }
         }
@@ -81,6 +82,7 @@ namespace TDH.Player
             if (sunLight != null)
             {
                 sunLight.ActivateVirtCamera(false);
+                sunLight.ActivateParticlesMeditation(false);
             }
             if (capeCloth != null)
             {

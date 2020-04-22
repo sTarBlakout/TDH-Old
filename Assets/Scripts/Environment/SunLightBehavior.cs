@@ -10,6 +10,8 @@ namespace TDH.Environment
     {
         [SerializeField] float cameraMoveStep = 0.05f;
 
+        [SerializeField] ParticleSystem[] particlesMeditationStarted;
+
         private GameObject player;
         private PlayerLightController lightController;
 
@@ -42,6 +44,7 @@ namespace TDH.Environment
         private void Start() 
         {
             virtualCameraGO.SetActive(false);    
+            ActivateParticlesMeditation(false);
         }
 
         private void FixedUpdate() 
@@ -84,6 +87,21 @@ namespace TDH.Environment
         public Transform GetPlayerStandPosition()
         {
             return playerStandPosition;
+        }
+
+        public void ActivateParticlesMeditation(bool activate)
+        {
+            foreach (ParticleSystem particle in particlesMeditationStarted)
+            {
+                if (activate)
+                {
+                    particle.Play();
+                }
+                else
+                {
+                    particle.Stop();
+                }
+            }
         }
     }
 }
