@@ -7,6 +7,7 @@ namespace TDH.Player
     public class PlayerEnvironmentInteraction : MonoBehaviour
     {
         [SerializeField] Transform leftHandTransform = null;
+        [SerializeField] Cloth capeCloth = null;
 
         private UIManager managerUI = null;
         private PlayerLightController lightController = null;
@@ -66,6 +67,11 @@ namespace TDH.Player
                 Transform playerStandPos = sunLight.GetPlayerStandPosition();
                 mover.ForceMove(playerStandPos.position, playerStandPos.rotation, "StartSunMeditation");
             }
+            if (capeCloth != null)
+            {
+                capeCloth.externalAcceleration = new Vector3(0, 0, -10);
+                capeCloth.randomAcceleration = new  Vector3(5, 0, 0);
+            }
             lightController.HealFull();
         }
 
@@ -75,6 +81,11 @@ namespace TDH.Player
             if (sunLight != null)
             {
                 sunLight.ActivateVirtCamera(false);
+            }
+            if (capeCloth != null)
+            {
+                capeCloth.externalAcceleration = new Vector3(0, 0, 0);
+                capeCloth.randomAcceleration = new  Vector3(5, 0, 3);
             }
             mover.AllowMove();
             managerUI.ActivatePanel(1);
