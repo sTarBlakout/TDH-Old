@@ -24,7 +24,8 @@ namespace TDH.UI
         private Text actionSliderText = null;
         private Text actionProgressText = null;
 
-        private Slider healthBarSlider = null;
+        private Slider targetHealthBarSlider = null;
+        private Slider currentHealthBarSlider = null;
         private Text healthBarText = null;
 
         private bool pwrAtkCD = false, spellCastCD = false, shieldCD = false;
@@ -44,7 +45,8 @@ namespace TDH.UI
             actionSlider = actionProgressSliderGO.GetComponent<Slider>();   
             actionSliderText = actionProgressSliderGO.transform.GetChild(2).GetComponent<Text>();
             actionProgressText = actionProgressSliderGO.transform.GetChild(3).GetComponent<Text>();
-            healthBarSlider = healthBar.GetComponent<Slider>();
+            targetHealthBarSlider = healthBar.GetComponent<Slider>();
+            currentHealthBarSlider = healthBar.transform.GetChild(0).GetComponent<Slider>();
             healthBarText = healthBar.transform.GetChild(3).GetComponent<Text>();
 
             powerfullAtkCooldownImg = powerfullAtkButton.transform.GetChild(1).GetComponent<Image>();
@@ -159,10 +161,15 @@ namespace TDH.UI
             healthBarText.text = initialHealth.ToString("0") + "/" + initialHealth.ToString("0");
         }
 
-        public void UpgradeHealthBar(float value)
+        public void UpgradeTargetHealthBar(float value)
         {   
-            healthBarSlider.value = value / initialHealth;
+            targetHealthBarSlider.value = value / initialHealth;
             healthBarText.text = value.ToString("0") + "/" + initialHealth.ToString("0");
+        }
+
+        public void UpgradeCurrentHealthBar(float value)
+        {   
+            currentHealthBarSlider.value = value / initialHealth;
         }
 
         public void ActivatePanel(int id)

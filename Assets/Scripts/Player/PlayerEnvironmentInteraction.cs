@@ -38,6 +38,7 @@ namespace TDH.Player
                     sunLight.ActivateVirtCamera(true);
                     managerUI.ActivatePanel(2);
                     sunLight.ActivateParticlesMeditation(true);
+                    lightController.HealFullMeditation();
                 }
             }
         }
@@ -73,7 +74,6 @@ namespace TDH.Player
                 capeCloth.externalAcceleration = new Vector3(0, 0, -10);
                 capeCloth.randomAcceleration = new  Vector3(5, 0, 0);
             }
-            lightController.HealFull();
         }
 
         public void StopMeditation()

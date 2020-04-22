@@ -12,10 +12,14 @@ namespace TDH.Player
     public class PlayerLightController : MonoBehaviour
     {
         [SerializeField] float initialLightHealth = 100f;
-        [SerializeField] float decreasingStep = 0.1f;
+        [SerializeField] float decreasingStepLight = 0.1f;
         [SerializeField] float minLightRange;
         [SerializeField] float lightsOutThreshold = 1f;
         private float currentLightHealth;
+        private float targetLighthHealth;
+
+        private float healthChangeStepDecrease = 1;
+        private float meditationIncreasingStep = 1;
 
         [SerializeField] Light[] lightsArea, lightsCharacter;
         [SerializeField] ParticleSystem[] particlesToStopWhenDie;
@@ -31,6 +35,7 @@ namespace TDH.Player
         private float damageHealthRatio;
 
         private bool isDead = false;
+        private bool isHealingFullMeditation = false;
 
         private UIManager managerUI = null;
         private PlayerCinemachineCamera cinemachineCam = null;
@@ -44,6 +49,7 @@ namespace TDH.Player
         private void Start() 
         {
             currentLightHealth = initialLightHealth;   
+            targetLighthHealth = initialLightHealth;  
             managerUI.SetInitialHealthValue(initialLightHealth);
             rangeTarget = lightsArea[0].range;
             maxLightRange = rangeTarget;
@@ -70,15 +76,39 @@ namespace TDH.Player
 
         private void FixedUpdate() 
         {
+            if (isHealingFullMeditation)
+            {   
+                if (targetLighthHealth < initialLightHealth)
+                {
+                    targetLighthHealth = Mathf.Clamp(targetLighthHealth + meditationIncreasingStep, 0f, initialLightHealth);
+                    managerUI.UpgradeTargetHealthBar(targetLighthHealth);
+                }
+                else
+                {
+                    isHealingFullMeditation = false;
+                }
+            }
+            if (currentLightHealth != targetLighthHealth)
+            {
+                if (currentLightHealth < targetLighthHealth)
+                {
+                    currentLightHealth = targetLighthHealth;
+                }
+                else 
+                {
+                    currentLightHealth -= healthChangeStepDecrease;
+                }
+                managerUI.UpgradeCurrentHealthBar(currentLightHealth);
+            }
             if (lightsArea[0].range > rangeTarget)
             {
                 foreach(Light light in lightsArea)
                 {
-                    light.range -= decreasingStep;
+                    light.range -= decreasingStepLight;
                 }
                 foreach (Light light in lightsCharacter)
                 {
-                    light.range -= decreasingStep;
+                    light.range -= decreasingStepLight;
                 }
             }    
             if (isDead)
@@ -87,28 +117,29 @@ namespace TDH.Player
             }
         }
 
-        public void HealFull()
+        public void HealFullMeditation()
         {
             if (isDead) return;
-            if (currentLightHealth == initialLightHealth) return;
-            currentLightHealth = initialLightHealth;
-            managerUI.UpgradeHealthBar(currentLightHealth);
+            if (targetLighthHealth == initialLightHealth) return;
+            meditationIncreasingStep = (initialLightHealth - targetLighthHealth) * 0.01f;
+            isHealingFullMeditation = true;
         }
 
         public void DealDamage(float damage)
         {   
             if (isDead) return;
-            if (damage >= currentLightHealth)
+            if (damage >= targetLighthHealth)
             {
-                currentLightHealth = 0;
+                targetLighthHealth = 0;
                 Die();
             }
             else
             {
-                currentLightHealth -= damage;
+                targetLighthHealth -= damage;
                 rangeTarget = currentLightHealth / initialLightHealth * (maxLightRange - minLightRange) + minLightRange;
             }
-            managerUI.UpgradeHealthBar(currentLightHealth);
+            healthChangeStepDecrease = (currentLightHealth - targetLighthHealth) * 0.05f;
+            managerUI.UpgradeTargetHealthBar(targetLighthHealth);
         }
 
         private void Die()
