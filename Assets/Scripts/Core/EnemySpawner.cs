@@ -27,7 +27,12 @@ namespace TDH.Core
                     isCurrentEnemyALive = true;
                 }
 
-                if (enemyInScene.transform.GetComponent<EnemyBehaviorAI>().GetCurrentEnemyState() == CurrentEnemyState.DEAD)
+                if (enemyInScene == null) 
+                {
+                    isCurrentEnemyALive = false;
+                    break;
+                } 
+                else if (enemyInScene.transform.GetComponent<EnemyBehaviorAI>().GetCurrentEnemyState() == CurrentEnemyState.DEAD)
                 {
                     isCurrentEnemyALive = false;
                 }

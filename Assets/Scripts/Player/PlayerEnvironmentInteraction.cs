@@ -61,9 +61,18 @@ namespace TDH.Player
             } 
         }
 
+        private void ResetEnemies()
+        {
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                Destroy(enemy);
+            }
+        }
+
         public void StartMeditation()
         {
             lookAtPointSunshineSet = false;
+            ResetEnemies();
             if (sunLight != null)
             {
                 Transform playerStandPos = sunLight.GetPlayerStandPosition();
