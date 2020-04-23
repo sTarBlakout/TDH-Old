@@ -15,6 +15,7 @@ namespace TDH.Player
         private PlayerInventory inventory;
         private PlayerMover mover;
         private PlayerCinemachineCamera playerCamera;
+        private PlayerEnvironmentInteraction playerEnvironment;
         private UIManager managerUI;
         private Animator animator;
 
@@ -59,6 +60,7 @@ namespace TDH.Player
         private Transform backWeaponCoverHolder;
         private bool isCalledToHideWeapon = false;
         private bool isWeaponInHands = false;
+        private bool isMeditating = false;
         private float remainingTimeToHideWeapon = 0f;
         public Action<Weapon> OnWeaponChange;
 
@@ -85,6 +87,7 @@ namespace TDH.Player
             inventory = GetComponent<PlayerInventory>();
             managerUI = GameObject.Find("UI").GetComponent<UIManager>();
             playerCamera = GetComponent<PlayerCinemachineCamera>();
+            playerEnvironment = GetComponent<PlayerEnvironmentInteraction>();
             attackArea = transform.Find("MeeleAttackArea").GetComponent<BoxCollider>();
             shieldCenter = transform.Find("ShieldCenter").gameObject;
             backWeaponHolder = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/WeaponContainer/BackWeapon"); 
@@ -92,6 +95,8 @@ namespace TDH.Player
 
             inventory.OnWeaponEquip += ChangeBackWeapon;
             inventory.OnSpellEquip += ChangeSpell;
+            playerEnvironment.OnMeditationStart += MeditationStartProcessing;
+            playerEnvironment.OnMeditationFinish += MeditationFinishProcessing;
 
         }
 
@@ -263,8 +268,6 @@ namespace TDH.Player
             managerUI.DeactivateActionSlider();
             StopCoroutine(spellCoroutine);
             isCastGoing = false;
-
-            
 
             switch (currentSpell.GetSpellType())
             {
@@ -502,6 +505,24 @@ namespace TDH.Player
             StartAttackFinishCoroutine();
         }
 
+        private void MeditationStartProcessing()
+        {
+            isMeditating = true;
+            if (!isWeaponInHands)
+            {
+                TakeHideBackWeapon(true);    
+            }
+        }
+
+        private void MeditationFinishProcessing()
+        {
+            isMeditating = false;
+            if (isWeaponInHands)
+            {
+                TakeHideBackWeapon(false);
+            }
+        }
+
         private void ChangeBackWeapon(Weapon weapon)
         {
             ChangeBackWeaponCover(weapon);
@@ -643,6 +664,7 @@ namespace TDH.Player
 
         private void TakeHideBackWeapon(bool take)
         {     
+            if (isMeditating || backWeapon == null) return;
             if (take)
             {
                 animator.SetTrigger("TakeWeapon");

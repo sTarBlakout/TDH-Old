@@ -1,6 +1,7 @@
 ﻿using TDH.Environment;
 using TDH.UI;
 using UnityEngine;
+using System;
 
 namespace TDH.Player
 {
@@ -8,6 +9,8 @@ namespace TDH.Player
     {
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Cloth capeCloth = null;
+
+        public Action OnMeditationStart, OnMeditationFinish;
 
         private UIManager managerUI = null;
         private PlayerLightController lightController = null;
@@ -74,6 +77,7 @@ namespace TDH.Player
 
         public void StartMeditation()
         {
+            OnMeditationStart();
             lookAtPointSunshineSet = false;
             backWeaponHolder.transform.Rotate(new Vector3(0, 0, 28), Space.Self);
             ResetEnemies();
@@ -91,6 +95,7 @@ namespace TDH.Player
 
         public void StopMeditation()
         {
+            OnMeditationFinish();
             animator.SetTrigger("StopSunMeditation");
             backWeaponHolder.transform.Rotate(new Vector3(0, 0, -28), Space.Self);
             if (sunLight != null)
