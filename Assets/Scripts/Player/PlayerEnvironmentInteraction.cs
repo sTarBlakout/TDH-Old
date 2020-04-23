@@ -19,12 +19,15 @@ namespace TDH.Player
 
         private bool lookAtPointSunshineSet = false;
 
+        private Transform backWeaponHolder = null;
+
         private void Awake() 
         {
             managerUI = GameObject.Find("UI").GetComponent<UIManager>();
             lightController = transform.GetComponent<PlayerLightController>();
             mover = transform.GetComponent<PlayerMover>();
             animator = transform.GetComponent<Animator>();
+            backWeaponHolder = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/WeaponContainer");
         }
 
         private void Update() 
@@ -72,6 +75,7 @@ namespace TDH.Player
         public void StartMeditation()
         {
             lookAtPointSunshineSet = false;
+            backWeaponHolder.transform.Rotate(new Vector3(0, 0, 28), Space.Self);
             ResetEnemies();
             if (sunLight != null)
             {
@@ -88,6 +92,7 @@ namespace TDH.Player
         public void StopMeditation()
         {
             animator.SetTrigger("StopSunMeditation");
+            backWeaponHolder.transform.Rotate(new Vector3(0, 0, -28), Space.Self);
             if (sunLight != null)
             {
                 sunLight.ActivateVirtCamera(false);

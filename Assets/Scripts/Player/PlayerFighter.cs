@@ -87,8 +87,8 @@ namespace TDH.Player
             playerCamera = GetComponent<PlayerCinemachineCamera>();
             attackArea = transform.Find("MeeleAttackArea").GetComponent<BoxCollider>();
             shieldCenter = transform.Find("ShieldCenter").gameObject;
-            backWeaponHolder = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/BackWeapon"); 
-            backWeaponCoverHolder = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/WeaponCover");
+            backWeaponHolder = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/WeaponContainer/BackWeapon"); 
+            backWeaponCoverHolder = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/WeaponContainer/WeaponCover");
 
             inventory.OnWeaponEquip += ChangeBackWeapon;
             inventory.OnSpellEquip += ChangeSpell;
