@@ -106,6 +106,10 @@ namespace TDH.Player
             playerCamera.ChangeVirtualCameraStat(playerCamera.GetDefAmp(), 1, 1);
             playerCamera.ChangeVirtualCameraStat(playerCamera.GetDefFreq(), 1, 2);
             playerCamera.ChangeVirtualCameraStat(playerCamera.GetDefDist(), 1, 3);
+            if (currentWeapon.name == "Unarmed")
+            {
+                isWeaponInHands = true;
+            }
         }
 
         private void FixedUpdate()
@@ -527,16 +531,38 @@ namespace TDH.Player
         {
             ChangeBackWeaponCover(weapon);
 
-            if (!isWeaponInHands)
+            if (!isMeditating)
             {
-                backWeapon = weapon;
-                HideShowBackWeapon();
-                newWeaponToChange = null;
+                if (!isWeaponInHands)
+                {
+                    backWeapon = weapon;
+                    HideShowBackWeapon();
+                    newWeaponToChange = null;
+                }
+                else
+                {
+                    newWeaponToChange = weapon;
+                    TakeHideBackWeapon(false);
+                }
             }
             else
             {
-                newWeaponToChange = weapon;
-                TakeHideBackWeapon(false);
+                ClearHand();
+                backWeapon = inventory.GetWeapon("Unarmed");
+                currentWeapon = weapon;
+                EquipWeapon(currentWeapon);
+            }
+        }
+
+        private void ClearHand()
+        {
+            if (rightHand.childCount > 3)
+            {
+                Transform temp = rightHand.GetChild(3);
+                if (temp != null)
+                {
+                    Destroy(temp.gameObject);
+                }
             }
         }
 

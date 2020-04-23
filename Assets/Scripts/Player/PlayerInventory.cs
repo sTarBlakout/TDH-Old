@@ -32,6 +32,19 @@ namespace TDH.Player
             FillInventoryUI();  
         }
 
+        public Weapon GetWeapon(string name)
+        {
+            foreach (Weapon weapon in weaponsArray)
+            {
+                if (weapon.name == name)
+                {
+                    return weapon;
+                }
+            }
+
+            return null;
+        }
+
         private void EquipWeapon(Weapon weapon)
         {
             if (eqquipedWeapon == weapon)
