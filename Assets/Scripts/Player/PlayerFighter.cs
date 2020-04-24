@@ -530,22 +530,22 @@ namespace TDH.Player
 
         private void MeditationStartProcessing()
         {
-            isMeditating = true;
             if (!isWeaponInHands)
             {
                 TakeHideBackWeapon(true);    
             }
+            isMeditating = true;
             ToggleWeaponMedParticle();
         }
 
         private void MeditationFinishProcessing()
         {
             isMeditating = false;
-            chargesLeft = currentWeapon.GetChargesAmount();
             if (isWeaponInHands)
             {
                 TakeHideBackWeapon(false);
             }
+            chargesLeft = currentWeapon.GetChargesAmount();
             ToggleWeaponMedParticle();
         }
 
