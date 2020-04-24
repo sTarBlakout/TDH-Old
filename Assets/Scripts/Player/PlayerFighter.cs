@@ -30,7 +30,7 @@ namespace TDH.Player
         private IEnumerator shieldTimerCoroutine;
         private GameObject shieldParticle;
         private GameObject secondShieldParticle;
-        private ParticleSystem weaponTrailParticle = null;
+        private ParticleSystem weaponTrailParticle = null, weaponChargeMedParticle = null;
         private BoxCollider attackArea;
         private bool isBlocking = false;
         private bool isShieldInCooldown = false;
@@ -509,6 +509,21 @@ namespace TDH.Player
             StartAttackFinishCoroutine();
         }
 
+        private void ToggleWeaponMedParticle()
+        {
+            if (weaponChargeMedParticle != null)
+            {
+                if (weaponChargeMedParticle.isPlaying)
+                {
+                    weaponChargeMedParticle.Stop();
+                }
+                else
+                {
+                    weaponChargeMedParticle.Play();
+                }
+            }
+        }
+
         private void MeditationStartProcessing()
         {
             isMeditating = true;
@@ -516,6 +531,7 @@ namespace TDH.Player
             {
                 TakeHideBackWeapon(true);    
             }
+            ToggleWeaponMedParticle();
         }
 
         private void MeditationFinishProcessing()
@@ -525,6 +541,7 @@ namespace TDH.Player
             {
                 TakeHideBackWeapon(false);
             }
+            ToggleWeaponMedParticle();
         }
 
         private void ChangeBackWeapon(Weapon weapon)
@@ -548,7 +565,14 @@ namespace TDH.Player
             else
             {
                 ClearHand();
-                backWeapon = inventory.GetWeapon("Unarmed");
+                if (weapon.name == "Unarmed")
+                {
+                    backWeapon = null;
+                }
+                else
+                {
+                    backWeapon = inventory.GetWeapon("Unarmed");
+                }
                 currentWeapon = weapon;
                 EquipWeapon(currentWeapon);
             }
@@ -706,6 +730,23 @@ namespace TDH.Player
             if (weapon == null) return;
             ResetAttackSeries();
             currentWeaponPrefab = weapon.Equip(rightHand, animator, attackArea, attackSeries);
+            if (currentWeaponPrefab != null)
+            {
+                Transform temp = currentWeaponPrefab.transform.Find("ChargeMedParticle");
+                if (temp.childCount != 0)
+                    weaponChargeMedParticle = temp.GetChild(0).GetComponent<ParticleSystem>();
+            }
+            if (weaponChargeMedParticle != null)
+            {
+                if (isMeditating)
+                {
+                    weaponChargeMedParticle.Play();
+                }
+                else
+                {
+                    weaponChargeMedParticle.Stop();
+                }
+            }
             animator.SetFloat("AttackSpeed", weapon.GetAttackSpeed());
             animator.runtimeAnimatorController = CreateMixedController();
             OnWeaponChange(weapon);

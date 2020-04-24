@@ -39,7 +39,7 @@ namespace TDH.Combat
         [SerializeField] float distChanging = 0f;
 
         public GameObject Equip(Transform handTransform, Animator animator, BoxCollider attackArea, 
-                        Dictionary<int, Dictionary<int, int>> attackSer)
+            Dictionary<int, Dictionary<int, int>> attackSer)
         {
             foreach (AttackSeries atkSer in attackSeries)
             {
