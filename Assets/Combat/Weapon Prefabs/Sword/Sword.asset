@@ -29,6 +29,8 @@ MonoBehaviour:
   attackSeries:
   - id: 1
     attackSequence: 0100000003000000050000000c0000000200000004000000060000000b000000
+  hasPowerfullAttack: 1
+  chargesAmount: 3
   damageAreaPrefab: {fileID: 724689303386092926, guid: 2e4885fc4e3e60a44832792ffa698ca5,
     type: 3}
   cameraPowerNoisePreset: {fileID: 0}

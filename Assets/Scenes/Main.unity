@@ -2576,6 +2576,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125374795}
   m_CullTransparentMesh: 0
+--- !u!1 &1135006205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3081855552809145529, guid: 84fce6f9a2d293c469bdfc02444743c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4712985782689717830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144142381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,6 +5889,11 @@ PrefabInstance:
       propertyPath: shieldTimeLimit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5307610071795776721, guid: 84fce6f9a2d293c469bdfc02444743c7,
+        type: 3}
+      propertyPath: particleChangWepMed
+      value: 
+      objectReference: {fileID: 1135006205}
     - target: {fileID: 5307610071795776722, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
       propertyPath: m_Acceleration

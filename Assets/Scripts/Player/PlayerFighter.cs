@@ -55,6 +55,7 @@ namespace TDH.Player
         [SerializeField] Weapon backWeapon = null;
         [SerializeField] Transform rightHand = null;
         [SerializeField] Transform leftHand = null;
+        [SerializeField] GameObject particleChangWepMed = null;
         private GameObject currentWeaponPrefab;
         private Weapon newWeaponToChange = null;
         private Transform backWeaponHolder;
@@ -578,15 +579,18 @@ namespace TDH.Player
                     backWeapon = inventory.GetWeapon("Unarmed");
                 }
                 currentWeapon = weapon;
+                if (particleChangWepMed.activeSelf)
+                    particleChangWepMed.SetActive(false);
+                particleChangWepMed.SetActive(true);
                 EquipWeapon(currentWeapon);
             }
         }
 
         private void ClearHand()
         {
-            if (rightHand.childCount > 3)
+            if (rightHand.childCount > 4)
             {
-                Transform temp = rightHand.GetChild(3);
+                Transform temp = rightHand.GetChild(4);
                 if (temp != null)
                 {
                     Destroy(temp.gameObject);
