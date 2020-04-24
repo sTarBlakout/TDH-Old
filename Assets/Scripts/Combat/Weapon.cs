@@ -21,6 +21,7 @@ namespace TDH.Combat
         [SerializeField] AttackSeries[] attackSeries;
         [Header("Powerfull Attack")]
         [SerializeField] bool hasPowerfullAttack = true;
+        [SerializeField] int chargesAmount = 1;
         [SerializeField] GameObject damageAreaPrefab;
         [SerializeField] NoiseSettings cameraPowerNoisePreset;
         [SerializeField] GameObject moveParticlePref;
@@ -68,6 +69,11 @@ namespace TDH.Combat
         public float GetPowerfullDamage()
         {
             return powerfullDamage;
+        }
+
+        public int GetChargesAmount()
+        {
+            return chargesAmount;
         }
 
         public bool HasTrail()

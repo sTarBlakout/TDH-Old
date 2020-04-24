@@ -31,6 +31,7 @@ namespace TDH.Player
         private GameObject shieldParticle;
         private GameObject secondShieldParticle;
         private ParticleSystem weaponTrailParticle = null, weaponChargeMedParticle = null;
+        private int chargesLeft = 0;
         private BoxCollider attackArea;
         private bool isBlocking = false;
         private bool isShieldInCooldown = false;
@@ -335,7 +336,8 @@ namespace TDH.Player
 
         public void PowerfullAttack()
         {
-            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown || !currentWeapon.HasPowerfullAttack()) 
+            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown || 
+                !currentWeapon.HasPowerfullAttack() || chargesLeft == 0)
             {
                 return;
             }
@@ -505,6 +507,7 @@ namespace TDH.Player
                 default: yield break;
             }
             isPowerfullAtkInCooldown = true;
+            chargesLeft -= 1;
             StartCoroutine(PowerfullAttackCooldown(currentWeapon.GetPowerfullCooldown()));
             StartAttackFinishCoroutine();
         }
@@ -537,6 +540,7 @@ namespace TDH.Player
         private void MeditationFinishProcessing()
         {
             isMeditating = false;
+            chargesLeft = currentWeapon.GetChargesAmount();
             if (isWeaponInHands)
             {
                 TakeHideBackWeapon(false);
@@ -747,6 +751,7 @@ namespace TDH.Player
                     weaponChargeMedParticle.Stop();
                 }
             }
+            chargesLeft = weapon.GetChargesAmount();
             animator.SetFloat("AttackSpeed", weapon.GetAttackSpeed());
             animator.runtimeAnimatorController = CreateMixedController();
             OnWeaponChange(weapon);
