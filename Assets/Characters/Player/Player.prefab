@@ -899,7 +899,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 0
+  m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -967,13 +967,14 @@ MonoBehaviour:
   attackVelocityBoost: 1.1
   timeToHideWeapon: 10
   timeToStopAttackSeries: 2
-  shieldTimeLimit: 1
+  shieldTimeLimit: 5
   shieldCooldown: 2
   currentWeapon: {fileID: 11400000, guid: d33d1166a9821034b9e9b800c1de7263, type: 2}
   backWeapon: {fileID: 0}
   rightHand: {fileID: 5305506029906415679}
   leftHand: {fileID: 5305551946095034527}
   particleChangWepMed: {fileID: 3081855552809145529}
+  isWeaponInHands: 0
   currentSpell: {fileID: 0}
 --- !u!114 &5326418177864688132
 MonoBehaviour:
@@ -994,6 +995,7 @@ MonoBehaviour:
   weaponsArray:
   - {fileID: 11400000, guid: 409446bafeeb05f4da791018c40373f3, type: 2}
   - {fileID: 11400000, guid: 5c06ef08564bb054c8732b430d25b0a3, type: 2}
+  - {fileID: 11400000, guid: d33d1166a9821034b9e9b800c1de7263, type: 2}
   spellsArray:
   - {fileID: 11400000, guid: b1aadab7ef28b3c4f9f9eb39dfb9eb5b, type: 2}
   - {fileID: 11400000, guid: cfe6df4cc29f7d64485dbd515a9f199a, type: 2}
@@ -1033,10 +1035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419967b651d69574986c3f91d07069e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialLightHealth: 100
+  initialLightHealth: 1000
   decreasingStepLight: 0.1
-  minLightRange: 1.1
-  lightsOutThreshold: 1
+  minLightRange: 3
+  lightsOutThreshold: 3.5
   lightsArea:
   - {fileID: 717514753}
   lightsCharacter:
@@ -1063,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftHandTransform: {fileID: 5305551946095034527}
-  capeCloth: {fileID: 0}
+  capeCloth: {fileID: 3609366941541916965}
 --- !u!1 &5307612265631691159
 GameObject:
   m_ObjectHideFlags: 0
@@ -36699,7 +36701,7 @@ Cloth:
   m_UseGravity: 1
   m_Damping: 0
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
-  m_RandomAcceleration: {x: 0, y: 0, z: 0}
+  m_RandomAcceleration: {x: 5, y: 0, z: 3}
   m_WorldVelocityScale: 0
   m_WorldAccelerationScale: 0.2
   m_Friction: 0.5
