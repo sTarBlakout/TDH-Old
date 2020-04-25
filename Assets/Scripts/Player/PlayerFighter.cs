@@ -61,7 +61,7 @@ namespace TDH.Player
         private Transform backWeaponHolder;
         private Transform backWeaponCoverHolder;
         private bool isCalledToHideWeapon = false;
-        private bool isWeaponInHands = false;
+        [SerializeField] private bool isWeaponInHands = false;
         private bool isMeditating = false;
         private float remainingTimeToHideWeapon = 0f;
         public Action<Weapon> OnWeaponChange;
@@ -110,7 +110,7 @@ namespace TDH.Player
             playerCamera.ChangeVirtualCameraStat(playerCamera.GetDefDist(), 1, 3);
             if (currentWeapon.name == "Unarmed")
             {
-                isWeaponInHands = true;
+                isWeaponInHands = false;
             }
         }
 
@@ -336,11 +336,17 @@ namespace TDH.Player
         }
 
         public void PowerfullAttack()
-        {
-            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown || 
-                !currentWeapon.HasPowerfullAttack() || chargesLeft == 0)
+        {          
+            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown || chargesLeft == 0)
             {
                 return;
+            }
+            if (currentWeapon.name == "Unarmed" && backWeapon != null)
+            {
+                if (!backWeapon.HasPowerfullAttack())
+                {
+                    return;
+                }
             }
 
             mover.RestrictMovement();
@@ -573,10 +579,12 @@ namespace TDH.Player
                 if (weapon.name == "Unarmed")
                 {
                     backWeapon = null;
+                    isWeaponInHands = false;
                 }
                 else
                 {
                     backWeapon = inventory.GetWeapon("Unarmed");
+                    isWeaponInHands = true;
                 }
                 currentWeapon = weapon;
                 if (particleChangWepMed.activeSelf)
