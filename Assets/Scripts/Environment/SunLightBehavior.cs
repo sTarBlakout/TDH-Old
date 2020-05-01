@@ -28,8 +28,6 @@ namespace TDH.Environment
 
         private void Awake() 
         {
-            player = GameObject.FindGameObjectWithTag("Player");    
-            lightController = player.GetComponent<PlayerLightController>();
             managerUI = GameObject.Find("UI").GetComponent<UIManager>();
             virtualCameraGO = transform.Find("VirtualCamera").gameObject;
             if (virtualCameraGO != null)
