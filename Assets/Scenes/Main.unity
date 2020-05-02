@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -406,7 +406,6 @@ MonoBehaviour:
   spellCastButton: {fileID: 1160838899}
   shieldButton: {fileID: 219296779}
   inventoryButton: {fileID: 1599242243}
-  sunLightButton: {fileID: 738526641}
   controlPanel: {fileID: 195993141}
   meditationPanel: {fileID: 332279041}
 --- !u!1 &44831309
@@ -1491,7 +1490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &646538517
 Transform:
   m_ObjectHideFlags: 0
@@ -5403,17 +5402,22 @@ PrefabInstance:
     - target: {fileID: 3365225022091374963, guid: a7c788305e8b4d84e8829b353be2cbfd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.24100333
+      value: 0.24100336
       objectReference: {fileID: 0}
     - target: {fileID: 3365225022091374963, guid: a7c788305e8b4d84e8829b353be2cbfd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9517187
+      value: -0.9517186
       objectReference: {fileID: 0}
     - target: {fileID: 3365225022091374963, guid: a7c788305e8b4d84e8829b353be2cbfd,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.11638835
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682515922809145743, guid: a7c788305e8b4d84e8829b353be2cbfd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.78
       objectReference: {fileID: 0}
     - target: {fileID: 8348538661352249139, guid: a7c788305e8b4d84e8829b353be2cbfd,
         type: 3}

@@ -11,7 +11,6 @@ namespace TDH.UI
         [SerializeField] GameObject spellCastButton = null;
         [SerializeField] GameObject shieldButton = null;
         [SerializeField] GameObject inventoryButton = null;
-        [SerializeField] GameObject sunLightButton = null;
 
         [SerializeField] GameObject controlPanel = null;
         [SerializeField] GameObject meditationPanel = null;
@@ -202,9 +201,6 @@ namespace TDH.UI
                     break;
                 case 3:
                     shieldButton.SetActive(activate);
-                    break;
-                case 4:
-                    sunLightButton.SetActive(activate);
                     break;
                 default:
                     break;

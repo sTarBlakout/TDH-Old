@@ -10,7 +10,7 @@ namespace TDH.Player
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Cloth capeCloth = null;
 
-        public Action OnMeditationStart, OnMeditationFinish;
+        public Action OnMeditationStart = null, OnMeditationFinish = null;
 
         private UIManager managerUI = null;
         private PlayerLightController lightController = null;
@@ -21,6 +21,7 @@ namespace TDH.Player
         private SunLightBehavior sunLight = null;
 
         private bool lookAtPointSunshineSet = false;
+        private bool isMeditating = false;
 
         private Transform backWeaponHolder = null;
 
@@ -54,7 +55,7 @@ namespace TDH.Player
             if (other.gameObject.CompareTag("SunShine"))
             {
                 sunLight = other.gameObject.GetComponent<SunLightBehavior>();
-                managerUI.ActivateButtonControlPanel(4, true);
+                sunLight.OnMeditationStarted += StartMeditation;
             }    
         }
 
@@ -62,8 +63,8 @@ namespace TDH.Player
         {
             if (other.gameObject.CompareTag("SunShine"))
             {
-                managerUI.ActivateButtonControlPanel(4, false);
                 sunLight = null;
+                other.gameObject.GetComponent<SunLightBehavior>().OnMeditationStarted -= StartMeditation;
             } 
         }
 
@@ -77,15 +78,12 @@ namespace TDH.Player
 
         public void StartMeditation()
         {
+            if (isMeditating) return;
+            isMeditating = true;
             OnMeditationStart();
             lookAtPointSunshineSet = false;
             backWeaponHolder.transform.Rotate(new Vector3(0, 0, 28), Space.Self);
             ResetEnemies();
-            if (sunLight != null)
-            {
-                Transform playerStandPos = sunLight.GetPlayerStandPosition();
-                mover.ForceMove(playerStandPos.position, playerStandPos.rotation, "StartSunMeditation");
-            }
             if (capeCloth != null)
             {
                 capeCloth.externalAcceleration = new Vector3(0, 0, -10);
@@ -110,6 +108,7 @@ namespace TDH.Player
             }
             mover.AllowMove();
             managerUI.ActivatePanel(1);
+            isMeditating = false;
         }
     }
 }
