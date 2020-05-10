@@ -63,7 +63,6 @@ namespace TDH.Player
         {
             if (other.gameObject.CompareTag("SunShine"))
             {
-                sunLight = null;
                 other.gameObject.GetComponent<SunLightBehavior>().OnMeditationStarted -= StartMeditation;
             } 
         }
