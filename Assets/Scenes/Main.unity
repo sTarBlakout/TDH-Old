@@ -2154,8 +2154,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.00017380399, y: 0.9449614, z: -0.32718146, w: -0.0005019786}
-  m_LocalPosition: {x: -19.608057, y: 3.7208686, z: 13.170791}
+  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 13.07038, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 942132388}
@@ -3566,6 +3566,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458789213}
   m_CullTransparentMesh: 0
+--- !u!1001 &1526001505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1637768795344856, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_Name
+      value: LootPlaceBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443893851384660, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229047591410504923, guid: 6bfa49b2a111e9b4d82a037663e29daa,
+        type: 3}
+      propertyPath: lootViewPrefab
+      value: 
+      objectReference: {fileID: 153104, guid: 09c232b67034c9e4cab6502726126250, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6bfa49b2a111e9b4d82a037663e29daa, type: 3}
 --- !u!1 &1537545211
 GameObject:
   m_ObjectHideFlags: 0
