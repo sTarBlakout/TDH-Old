@@ -8,6 +8,7 @@ namespace TDH.Combat
     {
         [Header("Required Fields")]
         [SerializeField] GameObject spellPrefab; 
+        [SerializeField] GameObject lootPointViewPref;
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] float timeToInstantiateSpell;
         [SerializeField] float damage;
@@ -24,6 +25,8 @@ namespace TDH.Combat
         [SerializeField] float maxTimeUsing;
         [Header("AOE")]
         [SerializeField] float radius = 1f;
+
+        public GameObject LootPointViewPref { get => lootPointViewPref; }
 
         public GameObject Cast(Transform transform) 
         {   

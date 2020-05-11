@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TDH.Combat;
+using TDH.Environment;
 
 namespace TDH.Player
 {
@@ -18,9 +19,11 @@ namespace TDH.Player
 
         private Dictionary<int, Weapon> weapons = new Dictionary<int, Weapon>();
         private Dictionary<int, Spell> spells = new Dictionary<int, Spell>();
+        private Dictionary<int, Item> items = new Dictionary<int, Item>();
 
-        [SerializeField] Weapon[] weaponsArray;
-        [SerializeField] Spell[] spellsArray;
+        [SerializeField] List<Weapon> weaponsList = new List<Weapon>();
+        [SerializeField] List<Spell> spellsList = new List<Spell>();
+        [SerializeField] List<Item> itemsList = new List<Item>();
 
         private Weapon eqquipedWeapon = null;
         private Spell eqquipedSpell = null;
@@ -28,13 +31,31 @@ namespace TDH.Player
 
         private void Start() 
         {
-            FillDictionaries();  
+            FillAllDictionaries();  
             FillInventoryUI();  
+        }
+
+        public void TakeWeaponSO(Weapon weapon)
+        {
+            weaponsList.Add(weapon);
+            FillWeaponDictionary();
+        }
+
+        public void TakeSpellSO(Spell spell)
+        {
+            spellsList.Add(spell);
+            FillSpellDictionary();
+        }
+
+        public void TakeItemSO(Item item)
+        {
+            itemsList.Add(item);
+            FillItemDictionary();
         }
 
         public Weapon GetWeapon(string name)
         {
-            foreach (Weapon weapon in weaponsArray)
+            foreach (Weapon weapon in weaponsList)
             {
                 if (weapon.name == name)
                 {
@@ -67,23 +88,41 @@ namespace TDH.Player
             OnSpellEquip(eqquipedSpell);
         }
 
-        private void FillDictionaries()
+        private void FillWeaponDictionary()
         {
             int i = 1;
-
-            foreach (Weapon weapon in weaponsArray)
+            foreach (Weapon weapon in weaponsList)
             {
                 weapons.Add(i, weapon);
                 i++;
             }
+        }
 
-            i = 1;
-
-            foreach (Spell spell in spellsArray)
+        private void FillSpellDictionary()
+        {
+            int i = 1;
+            foreach (Spell spell in spellsList)
             {
                 spells.Add(i, spell);
                 i++;
             }
+        }
+
+        private void FillItemDictionary()
+        {
+            int i = 1;
+            foreach (Item item in itemsList)
+            {
+                items.Add(i, item);
+                i++;
+            }
+        }
+
+        private void FillAllDictionaries()
+        {
+            FillWeaponDictionary();
+            FillSpellDictionary();
+            FillItemDictionary();
         }
 
         private void FillInventoryUI()

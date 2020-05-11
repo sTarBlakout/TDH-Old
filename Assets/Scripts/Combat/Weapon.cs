@@ -11,6 +11,7 @@ namespace TDH.Combat
         [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] GameObject weaponBackPrefab = null;
         [SerializeField] GameObject weaponBackCoverPrefab = null;
+        [SerializeField] GameObject lootPointViewPref;
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] bool hasTrail = false;
         [SerializeField] WeaponType weaponType;
@@ -38,6 +39,8 @@ namespace TDH.Combat
         [SerializeField] float shackingAmp = 0f;
         [SerializeField] float shackingFreq = 0f;
         [SerializeField] float distChanging = 0f;
+
+        public GameObject LootPointViewPref { get => lootPointViewPref; }
 
         public GameObject Equip(Transform handTransform, Animator animator, BoxCollider attackArea, 
             Dictionary<int, Dictionary<int, int>> attackSer)
