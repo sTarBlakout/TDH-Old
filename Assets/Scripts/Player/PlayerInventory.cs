@@ -21,6 +21,7 @@ namespace TDH.Player
         private Dictionary<int, Spell> spells = new Dictionary<int, Spell>();
         private Dictionary<int, Item> items = new Dictionary<int, Item>();
 
+        [Header("Inventory")]
         [SerializeField] List<Weapon> weaponsList = new List<Weapon>();
         [SerializeField] List<Spell> spellsList = new List<Spell>();
         [SerializeField] List<Item> itemsList = new List<Item>();
