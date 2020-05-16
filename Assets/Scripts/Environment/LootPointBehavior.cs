@@ -49,6 +49,7 @@ namespace TDH.Environment
         public void PlayerTakeItem()
         {
             if (player == null) return;
+            player.gameObject.GetComponent<Animator>().SetTrigger("PickUp");
             switch (type)
             {
                 case LootType.ITEM:
