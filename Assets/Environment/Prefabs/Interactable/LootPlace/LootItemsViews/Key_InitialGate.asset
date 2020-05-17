@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   lootPointViewPref: {fileID: 153104, guid: 09c232b67034c9e4cab6502726126250, type: 3}
-  uniqueKeyCode: 0
+  uniqueKeyCode: 1

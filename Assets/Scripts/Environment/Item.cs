@@ -13,6 +13,7 @@ namespace TDH.Environment
         [SerializeField] int uniqueKeyCode;
 
         public GameObject LootPointViewPref { get => lootPointViewPref; }
+        public int UniqueKeyCode { get => uniqueKeyCode; }
     }
 
     public enum ItemType

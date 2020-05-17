@@ -12,6 +12,7 @@ namespace TDH.Environment
         [SerializeField] ParticleSystem[] paticlesOnOpening = null;
 
         [Header("Values")]
+        [SerializeField] int openKeyID;
         [SerializeField] float openingSpeed = 0.1f;
         [SerializeField] float openingTime = 2f;
         [SerializeField] float delayAfterActivating = 1f;
@@ -20,6 +21,7 @@ namespace TDH.Environment
         [SerializeField] GameObject openButton = null;
 
         private PlayerMover playerMover = null;
+        private PlayerInventory playerInventory = null;
 
         private float timeToStopOpening = 0.0f;
 
@@ -28,6 +30,7 @@ namespace TDH.Environment
         private void Awake() 
         {
             playerMover = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMover>();
+            playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         }
 
         private void Start() 
@@ -66,6 +69,7 @@ namespace TDH.Environment
 
         public void StartOpeningSequence()
         {
+            if (playerInventory.GetKey(openKeyID) == null) return;
             transform.GetComponent<BoxCollider>().enabled = false;
             openButton.SetActive(false);
             if (playerMover != null)

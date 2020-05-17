@@ -43,7 +43,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.8584906, g: 0.5564064, b: 0.020247417, a: 1}
-  m_Intensity: 30
+  m_Intensity: 15
   m_Range: 10
   m_SpotAngle: 140
   m_InnerSpotAngle: 120
@@ -135,7 +135,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.85882354, g: 0.5568628, b: 0.019607844, a: 1}
-  m_Intensity: 10
+  m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -992,13 +992,9 @@ MonoBehaviour:
   ContentSpells: {fileID: 0}
   ButtonPrefab: {fileID: 375530691902438984, guid: ed8569964efe14549ab4083ca77f9c95,
     type: 3}
-  weaponsArray:
-  - {fileID: 11400000, guid: 409446bafeeb05f4da791018c40373f3, type: 2}
-  - {fileID: 11400000, guid: 5c06ef08564bb054c8732b430d25b0a3, type: 2}
-  - {fileID: 11400000, guid: d33d1166a9821034b9e9b800c1de7263, type: 2}
-  spellsArray:
-  - {fileID: 11400000, guid: b1aadab7ef28b3c4f9f9eb39dfb9eb5b, type: 2}
-  - {fileID: 11400000, guid: cfe6df4cc29f7d64485dbd515a9f199a, type: 2}
+  weaponsList: []
+  spellsList: []
+  itemsList: []
 --- !u!114 &1883954841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67986,7 +67982,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.85882354, g: 0.5568628, b: 0.019607844, a: 1}
-  m_Intensity: 10
+  m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

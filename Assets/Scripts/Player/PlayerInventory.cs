@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using TDH.Combat;
@@ -34,6 +35,11 @@ namespace TDH.Player
         {
             FillAllDictionaries();  
             FillInventoryUI();  
+        }
+
+        public Item GetKey(int id)
+        {
+            return itemsList.Find(item => item.UniqueKeyCode == id);
         }
 
         public void TakeWeaponSO(Weapon weapon)
