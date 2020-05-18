@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3005917295842794322}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RotatePointGate2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 3005917296068593417}
   - component: {fileID: 3005917296068593416}
   - component: {fileID: 8148614592812534517}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Gate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3005917296155155730}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RotatePointGate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,6 +561,7 @@ MonoBehaviour:
   paticlesOnOpening:
   - {fileID: 5721783293148490692}
   - {fileID: 2335730022384194643}
+  openKeyID: 0
   openingSpeed: 0.005
   openingTime: 5
   delayAfterActivating: 1
@@ -577,7 +578,7 @@ GameObject:
   - component: {fileID: 7141777146099933293}
   - component: {fileID: 7141777146100977713}
   - component: {fileID: 3879419338316601039}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Gate2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
