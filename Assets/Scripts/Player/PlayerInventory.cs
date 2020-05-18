@@ -32,6 +32,21 @@ namespace TDH.Player
             FillInventoryUI();  
         }
 
+        public void RemoveItem(Item item)
+        {   
+            itemsList.Remove(item);
+        }
+
+        public void RemoveSpell(Spell spell)
+        {   
+            spellsList.Remove(spell);
+        }
+
+        public void RemoveWeapon(Weapon weapon)
+        {   
+            weaponsList.Remove(weapon);
+        }
+
         public Item GetKey(int id)
         {
             return itemsList.Find(item => item.UniqueKeyCode == id);
@@ -40,29 +55,24 @@ namespace TDH.Player
         public void TakeWeaponSO(Weapon weapon)
         {
             weaponsList.Add(weapon);
+            FillInventoryUI();
         }
 
         public void TakeSpellSO(Spell spell)
         {
             spellsList.Add(spell);
+            FillInventoryUI();
         }
 
         public void TakeItemSO(Item item)
         {
             itemsList.Add(item);
+            FillInventoryUI();
         }
 
         public Weapon GetWeapon(string name)
         {
-            foreach (Weapon weapon in weaponsList)
-            {
-                if (weapon.name == name)
-                {
-                    return weapon;
-                }
-            }
-
-            return null;
+            return weaponsList.Find( weapon => weapon.name == name );
         }
 
         private void EquipWeapon(Weapon weapon)
@@ -89,6 +99,12 @@ namespace TDH.Player
 
         private void FillInventoryUI()
         {
+            foreach (Transform child in ContentWeapons.transform)
+                Destroy(child.gameObject);
+
+            foreach (Transform child in ContentSpells.transform)
+                Destroy(child.gameObject);
+
             GameObject temp;
 
             foreach (Weapon weapon in weaponsList)

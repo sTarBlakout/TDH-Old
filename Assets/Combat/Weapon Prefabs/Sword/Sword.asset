@@ -18,6 +18,8 @@ MonoBehaviour:
     type: 3}
   weaponBackCoverPrefab: {fileID: 1241252054098534, guid: cdcd31ac69744ec4d928e5d032e933a4,
     type: 3}
+  lootPointViewPref: {fileID: 1009624335644192096, guid: 22280a1c66dec2b4080839bd4df98668,
+    type: 3}
   animatorOverride: {fileID: 22100000, guid: d771ffb7df775c346b5f97907d6fef83, type: 2}
   hasTrail: 1
   weaponType: 1

@@ -69,7 +69,9 @@ namespace TDH.Environment
 
         public void StartOpeningSequence()
         {
-            if (playerInventory.GetKey(openKeyID) == null) return;
+            Item key = playerInventory.GetKey(openKeyID);
+            if (key == null) return;
+            playerInventory.RemoveItem(key);
             transform.GetComponent<BoxCollider>().enabled = false;
             openButton.SetActive(false);
             if (playerMover != null)
