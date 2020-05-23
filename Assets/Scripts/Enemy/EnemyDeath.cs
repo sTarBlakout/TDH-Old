@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using TDH.Environment;
 using UnityEngine;
 
 namespace TDH.EnemyAI
@@ -13,6 +13,10 @@ namespace TDH.EnemyAI
         [SerializeField] float disappearingTime = 1f;
         [SerializeField] float changeStep = 10;
         [SerializeField] float goingUnderGroundStep = 0.1f;
+
+        [Header("Loot")]
+        [SerializeField] GameObject lootPointPref;
+        [SerializeField] ScriptableObject[] lootOnDeath;
 
         private GameObject liquidParticle;
         private float timeToParticleStop;
@@ -61,7 +65,21 @@ namespace TDH.EnemyAI
                 yield return new WaitForSeconds(0.1f);
             }
             liquidParticle.transform.GetComponent<ParticleSystem>().Stop();
+            SpawnLootPoint();
             Destroy(this.gameObject);
+        }
+
+        private void SpawnLootPoint()
+        {
+            if (lootPointPref == null || lootOnDeath.Length == 0) return;
+
+            GameObject lootPoint = Instantiate(lootPointPref, this.transform);
+            lootPoint.GetComponent<LootPointBehavior>().SetLoot(lootOnDeath[0]);
+            lootPoint.transform.parent = null;
+            lootPoint.transform.position = new Vector3(
+                lootPoint.transform.position.x,
+                lootPoint.transform.position.y + 0.7f,
+                lootPoint.transform.position.z);
         }
     }
 }

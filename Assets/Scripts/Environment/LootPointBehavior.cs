@@ -16,7 +16,7 @@ namespace TDH.Environment
         private GameObject takeButton;
 
         [Header("Loot Info")]
-        [SerializeField] ScriptableObject lootSO;
+        [SerializeField] ScriptableObject lootSO = null;
 
         [Header("Loot Point Behavior")]
         [SerializeField] float rotateSpeed;
@@ -24,22 +24,29 @@ namespace TDH.Environment
 
         private bool isLootTaken = false;
         private Transform lootPoint;
-        private GameObject viewToInstantiate;
         private GameObject instantiatedView;
 
         private void Awake() 
         {
             lootPoint = this.transform.GetChild(1);
             takeButton = transform.Find("Canvas").GetChild(0).gameObject;
-            viewToInstantiate = GetViewForLootToShow();
         }
 
         void Start()
         {
             takeButton.SetActive(false);
-            instantiatedView = Instantiate(viewToInstantiate, lootPoint);
+            if (GetViewForLootToShow() != null)
+                instantiatedView = Instantiate(GetViewForLootToShow(), lootPoint);
             LeanTween.moveY(lootPoint.gameObject, height, upDownSpeed).setLoopPingPong();
             LeanTween.rotateAround(lootPoint.gameObject, Vector3.up, rotateStep, rotateSpeed).setLoopClamp();
+        }
+
+        public void SetLoot(ScriptableObject loot)
+        {
+            if (lootSO != null) return;
+
+            lootSO = loot;
+            instantiatedView = Instantiate(GetViewForLootToShow(), lootPoint);
         }
 
         //Called by UI button
@@ -89,12 +96,5 @@ namespace TDH.Environment
                 takeButton.SetActive(false);
             }
         }
-    }
-
-    public enum LootType
-    {
-        WEAPON,
-        SPELL,
-        ITEM
     }
 }
