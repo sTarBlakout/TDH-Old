@@ -52,21 +52,14 @@ namespace TDH.Player
             return itemsList.Find(item => item.UniqueKeyCode == id);
         }
 
-        public void TakeWeaponSO(Weapon weapon)
+        public void TakeLootSO(ScriptableObject loot)
         {
-            weaponsList.Add(weapon);
-            FillInventoryUI();
-        }
-
-        public void TakeSpellSO(Spell spell)
-        {
-            spellsList.Add(spell);
-            FillInventoryUI();
-        }
-
-        public void TakeItemSO(Item item)
-        {
-            itemsList.Add(item);
+            if (loot is Weapon)
+                weaponsList.Add((Weapon)loot);
+            else if (loot is Spell)
+                spellsList.Add((Spell)loot);
+            else if (loot is Item)
+                itemsList.Add((Item)loot);
             FillInventoryUI();
         }
 

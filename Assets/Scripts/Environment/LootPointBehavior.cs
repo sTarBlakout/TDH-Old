@@ -16,10 +16,7 @@ namespace TDH.Environment
         private GameObject takeButton;
 
         [Header("Loot Info")]
-        [SerializeField] LootType type;
-        [SerializeField] Item itemSO;
-        [SerializeField] Weapon weaponSO;
-        [SerializeField] Spell spellSO;
+        [SerializeField] ScriptableObject lootSO;
 
         [Header("Loot Point Behavior")]
         [SerializeField] float rotateSpeed;
@@ -50,20 +47,7 @@ namespace TDH.Environment
         {
             if (player == null) return;
             player.gameObject.GetComponent<Animator>().SetTrigger("PickUp");
-            switch (type)
-            {
-                case LootType.ITEM:
-                    player.TakeItemSO(itemSO);
-                    break;
-                case LootType.WEAPON:
-                    player.TakeWeaponSO(weaponSO);
-                    break;
-                case LootType.SPELL:
-                    player.TakeSpellSO(spellSO);
-                    break;
-                default:
-                    break;
-            }
+            player.TakeLootSO(lootSO);
             StartCoroutine(ItemPickedUpCoroutine());
         }
 
@@ -78,17 +62,14 @@ namespace TDH.Environment
 
         private GameObject GetViewForLootToShow()
         {
-            switch (type)
-            {
-                case LootType.ITEM:
-                    return itemSO.LootPointViewPref;
-                case LootType.WEAPON:
-                    return weaponSO.LootPointViewPref;
-                case LootType.SPELL:
-                    return spellSO.LootPointViewPref;
-                default:
-                    return null;
-            }
+            if (lootSO is Weapon)
+                return ((Weapon)lootSO).LootPointViewPref;
+            else if (lootSO is Spell)
+                return ((Spell)lootSO).LootPointViewPref;
+            else if (lootSO is Item)
+                return ((Item)lootSO).LootPointViewPref;
+            else
+                return null;
         }
 
         private void OnTriggerEnter(Collider other) 
