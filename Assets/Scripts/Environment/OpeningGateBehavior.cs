@@ -16,6 +16,7 @@ namespace TDH.Environment
         [SerializeField] float openingSpeed = 0.1f;
         [SerializeField] float openingTime = 2f;
         [SerializeField] float delayAfterActivating = 1f;
+        [SerializeField] float delayBeforeStartMove = 1f;
 
         [Header("UI")]
         [SerializeField] GameObject openButton = null;
@@ -85,6 +86,7 @@ namespace TDH.Environment
             timeToStopOpening = Time.time + openingTime;
             isOpening = true;
             OpeningParticlePlay(true);
+            yield return new WaitForSeconds(delayBeforeStartMove);
             playerMover.AllowMove();
         }
 

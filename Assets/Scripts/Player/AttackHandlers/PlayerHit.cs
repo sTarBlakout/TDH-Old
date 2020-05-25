@@ -36,8 +36,9 @@ namespace TDH.Player
             hitPower = weapon.GetHitPower();
         }
 
-        private void ActivateCollider()
+        private void ActivateCollider(bool attack)
         {
+            if (!attack) return;
             boxCollider.enabled = true;
         }
 

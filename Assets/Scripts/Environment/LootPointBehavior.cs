@@ -11,7 +11,8 @@ namespace TDH.Environment
         private const float rotateStep = 360f;
         private const float upDownSpeed = 1.2f;
 
-        private PlayerInventory player;
+        private PlayerInventory inventory;
+        private PlayerMover mover;
 
         private GameObject takeButton;
 
@@ -52,9 +53,10 @@ namespace TDH.Environment
         //Called by UI button
         public void PlayerTakeItem()
         {
-            if (player == null) return;
-            player.gameObject.GetComponent<Animator>().SetTrigger("PickUp");
-            player.TakeLootSO(lootSO);
+            if (inventory == null) return;
+            mover.RestrictMovement();
+            inventory.gameObject.GetComponent<Animator>().SetTrigger("PickUp");
+            inventory.TakeLootSO(lootSO);
             StartCoroutine(ItemPickedUpCoroutine());
         }
 
@@ -64,6 +66,7 @@ namespace TDH.Environment
             Destroy(instantiatedView);
             this.GetComponent<ParticleSystem>().Stop();
             yield return new WaitForSeconds(secondsToDestroy);
+            mover.AllowMove();
             Destroy(this.gameObject);
         }
 
@@ -83,7 +86,8 @@ namespace TDH.Environment
         {
             if (other.gameObject.CompareTag("Player"))    
             {
-                player = other.gameObject.GetComponent<PlayerInventory>();
+                inventory = other.gameObject.GetComponent<PlayerInventory>();
+                mover = other.gameObject.GetComponent<PlayerMover>();
                 takeButton.transform.LookAt(Camera.main.transform);
                 takeButton.SetActive(true);
             }

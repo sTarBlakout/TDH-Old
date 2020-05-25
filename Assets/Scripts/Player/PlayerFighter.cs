@@ -44,7 +44,7 @@ namespace TDH.Player
         private IEnumerator powAttackCoroutine;
         private Dictionary<int, Dictionary<int, int>> attackSeries = new Dictionary<int, Dictionary<int, int>>();
         public Action OnAttackStarted;
-        public Action OnHit;
+        public Action<bool> OnHit;
         public Action OnAttackFinished;
         public Action OnPowerfullAttackStarted;
         public Action OnBlockStarted;
@@ -898,7 +898,7 @@ namespace TDH.Player
 
         public void Hit() 
         {   
-            OnHit();
+            OnHit(isAttackGoing);
             StartAttackFinishCoroutine();
         }
 
