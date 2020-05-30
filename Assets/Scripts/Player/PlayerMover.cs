@@ -98,9 +98,24 @@ namespace TDH.Player
             navMeshAgent.enabled = false;
         }
 
+        public void ActivateNavMeshAgent(bool activate)
+        {
+           navMeshAgent.enabled = activate;
+        }
+
         public void SetVelocity(float vel)
         {  
             navMeshAgent.velocity = transform.forward * vel;
+        }
+        
+        public bool CanReachDestination(Vector3 destination)
+        {
+            NavMeshPath path = new NavMeshPath();
+            navMeshAgent.CalculatePath(destination, path);
+            if (path.status == NavMeshPathStatus.PathInvalid)
+                return false;
+            else
+                return true;
         }
 
         public bool IsNavMeshAgentEnabled()

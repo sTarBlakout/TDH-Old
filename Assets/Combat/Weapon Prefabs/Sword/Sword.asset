@@ -47,6 +47,7 @@ MonoBehaviour:
   powerfullDamage: 50
   powerfullHit: 6
   powerfullCooldown: 3
+  moveForwardDist: 8
   cameraNoisePreset: {fileID: 11400000, guid: 9355f1766da466a44b7f19f8c4256ecd, type: 2}
   shackingAmp: 0.2
   shackingFreq: 0.2

@@ -34,11 +34,14 @@ namespace TDH.Combat
         [SerializeField] float powerfullDamage;
         [SerializeField] float powerfullHit;
         [SerializeField] float powerfullCooldown;
+        [SerializeField] float moveForwardDist;
         [Header("Camera Shaking")]
         [SerializeField] NoiseSettings cameraNoisePreset;
         [SerializeField] float shackingAmp = 0f;
         [SerializeField] float shackingFreq = 0f;
         [SerializeField] float distChanging = 0f;
+
+        public float MoveForwardDist { get => moveForwardDist; }
 
         public GameObject LootPointViewPref { get => lootPointViewPref; }
 

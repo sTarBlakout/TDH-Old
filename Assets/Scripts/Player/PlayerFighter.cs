@@ -476,7 +476,16 @@ namespace TDH.Player
             {
                 case 1:
                 {
-                    this.transform.position = damageArea.transform.GetChild(0).position;
+                    Vector3 destinationPoint;
+                    float destinationShorteningCoef = 0;
+                    mover.ActivateNavMeshAgent(true);
+                    do {
+                        destinationPoint = transform.position + transform.forward * (currentWeapon.MoveForwardDist - destinationShorteningCoef);
+                        destinationShorteningCoef++;
+                    } while (!mover.CanReachDestination(destinationPoint));
+                    mover.ActivateNavMeshAgent(false);
+                    transform.position = destinationPoint;
+
                     GameObject temp = Instantiate(currentWeapon.GetMovePowParticle(), transform);
                     temp.transform.parent = null;
                     if (chargeParticle != null)
