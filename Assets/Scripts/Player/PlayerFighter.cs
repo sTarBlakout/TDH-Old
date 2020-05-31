@@ -486,8 +486,6 @@ namespace TDH.Player
                     mover.ActivateNavMeshAgent(false);
                     transform.position = destinationPoint;
 
-                    GameObject temp = Instantiate(currentWeapon.GetMovePowParticle(), transform);
-                    temp.transform.parent = null;
                     if (chargeParticle != null)
                     {
                         chargeParticle.GetComponent<ParticleSystem>().Stop();

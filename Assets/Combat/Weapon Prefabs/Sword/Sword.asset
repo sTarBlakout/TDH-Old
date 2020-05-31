@@ -36,8 +36,7 @@ MonoBehaviour:
   damageAreaPrefab: {fileID: 724689303386092926, guid: 2e4885fc4e3e60a44832792ffa698ca5,
     type: 3}
   cameraPowerNoisePreset: {fileID: 0}
-  moveParticlePref: {fileID: 1655457316006132, guid: e89cac94b3d07a64682a79615fdf7223,
-    type: 3}
+  moveParticlePref: {fileID: 0}
   chargingParticlePref: {fileID: 1651496584221570, guid: 896754aa71c949344a6f75beb219a15d,
     type: 3}
   splashParticlePref: {fileID: 0}
