@@ -54,14 +54,15 @@ namespace TDH.Environment
         public void PlayerTakeItem()
         {
             if (inventory == null) return;
-            mover.RestrictMovement();
-            inventory.gameObject.GetComponent<Animator>().SetTrigger("PickUp");
-            inventory.TakeLootSO(lootSO);
+            Quaternion playerToKeyRotation = Quaternion.LookRotation(this.transform.position - mover.transform.position);
+            mover.ForceMove(Vector3.zero, playerToKeyRotation, "PickUp");
             StartCoroutine(ItemPickedUpCoroutine());
         }
 
         private IEnumerator ItemPickedUpCoroutine()
         {
+            yield return new WaitForSeconds(0.5f);
+            inventory.TakeLootSO(lootSO);
             takeButton.SetActive(false);
             Destroy(instantiatedView);
             this.GetComponent<ParticleSystem>().Stop();

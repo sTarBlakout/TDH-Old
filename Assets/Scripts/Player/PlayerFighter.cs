@@ -337,7 +337,7 @@ namespace TDH.Player
 
         public void PowerfullAttack()
         {          
-            if (isAttackGoing || isCastGoing || isBlocking || isPowerfullAtkInCooldown || chargesLeft == 0 || backWeapon == null)
+            if (isAttackGoing || isCalledToHideWeapon || isCastGoing || isBlocking || isPowerfullAtkInCooldown || chargesLeft == 0 || backWeapon == null)
             {
                 return;
             }
@@ -925,6 +925,7 @@ namespace TDH.Player
             backWeapon = currentWeapon;
             currentWeapon = temp;
             EquipWeapon(currentWeapon);
+            isCalledToHideWeapon = false;
         }
 
     #endregion

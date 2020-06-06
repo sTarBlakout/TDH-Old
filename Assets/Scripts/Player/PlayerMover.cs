@@ -126,8 +126,12 @@ namespace TDH.Player
         public void ForceMove(Vector3 position, Quaternion rotation, string moveEndAnimTrigger)
         {
             RestrictMovement();
-            forceMoveTarget = position;
-            forceRotationTarget = rotation;
+            if (position == Vector3.zero)
+                forceMoveTarget = transform.position;
+            else
+                forceMoveTarget = position; 
+            Vector3 rot = rotation.eulerAngles;
+            forceRotationTarget = Quaternion.Euler (transform.eulerAngles.x, rot.y, transform.eulerAngles.z);
             forceMoveEndTriggerName = moveEndAnimTrigger;
             isForceMove = true;
             isForceRotate = true;
@@ -152,7 +156,7 @@ namespace TDH.Player
                 }
                 if (Quaternion.Angle(transform.rotation, forceRotationTarget) > 15f && isForceRotate)
                 {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, forceRotationTarget, 5f);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, forceRotationTarget, 10f);
                 }
                 else
                 {
@@ -162,7 +166,8 @@ namespace TDH.Player
             else
             {
                 isForceAction = false;
-                animator.SetTrigger(forceMoveEndTriggerName);
+                if (forceMoveEndTriggerName != "")
+                    animator.SetTrigger(forceMoveEndTriggerName);
             }
         }
 

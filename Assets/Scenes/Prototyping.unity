@@ -1601,7 +1601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357774855}
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 183.4, y: 13.130382, z: 7.4999995}
+  m_LocalPosition: {x: -2.8, y: 13.130381, z: -6.2999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1580583237}
@@ -1829,7 +1829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55642083, guid: 80c3d3a7ae30c9943af5c67c7253dfad, type: 3}
       propertyPath: delayAfterActivating
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 55642083, guid: 80c3d3a7ae30c9943af5c67c7253dfad, type: 3}
       propertyPath: delayBeforeStartMove
@@ -4628,6 +4628,10 @@ PrefabInstance:
     - target: {fileID: 55642083, guid: 80c3d3a7ae30c9943af5c67c7253dfad, type: 3}
       propertyPath: delayBeforeStartMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 55642083, guid: 80c3d3a7ae30c9943af5c67c7253dfad, type: 3}
+      propertyPath: delayAfterActivating
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3005917296179772371, guid: 80c3d3a7ae30c9943af5c67c7253dfad,
         type: 3}
@@ -21028,7 +21032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790303578}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 183.4, y: 13.130382, z: 7.4999995}
+  m_LocalPosition: {x: -2.8, y: 13.130381, z: -6.2999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 264151555}
@@ -26504,7 +26508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55642083, guid: 80c3d3a7ae30c9943af5c67c7253dfad, type: 3}
       propertyPath: delayAfterActivating
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 55642083, guid: 80c3d3a7ae30c9943af5c67c7253dfad, type: 3}
       propertyPath: openKeyID
@@ -26627,7 +26631,7 @@ PrefabInstance:
     - target: {fileID: 5305415013013460383, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 183.4
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 5305415013013460383, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
@@ -26637,7 +26641,7 @@ PrefabInstance:
     - target: {fileID: 5305415013013460383, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5305415013013460383, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
@@ -26683,8 +26687,12 @@ PrefabInstance:
         type: 3}
       propertyPath: backWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 409446bafeeb05f4da791018c40373f3,
-        type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307610071795776721, guid: 84fce6f9a2d293c469bdfc02444743c7,
+        type: 3}
+      propertyPath: timeToHideWeapon
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5307610071795776723, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
       propertyPath: joystick
@@ -26698,7 +26706,7 @@ PrefabInstance:
     - target: {fileID: 5326418177864688132, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
       propertyPath: weaponsList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5326418177864688132, guid: 84fce6f9a2d293c469bdfc02444743c7,
         type: 3}
