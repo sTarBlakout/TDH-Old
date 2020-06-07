@@ -561,6 +561,7 @@ MonoBehaviour:
   paticlesOnOpening:
   - {fileID: 5721783293148490692}
   - {fileID: 2335730022384194643}
+  camNoise: {fileID: 11400000, guid: 205c3085dad572e468d9043b6d0144af, type: 2}
   openKeyID: 0
   openingSpeed: 0.005
   openingTime: 5

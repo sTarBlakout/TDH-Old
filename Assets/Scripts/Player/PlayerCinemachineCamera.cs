@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using UnityEngine;
+using System.Collections;
 
 namespace TDH.Player
 {
@@ -167,12 +168,18 @@ namespace TDH.Player
             }
         }
 
-        public void SetCameraNoice(NoiseSettings preset, float amp, float freq)
+        public void SetCameraNoice(NoiseSettings preset, float amp, float freq, float time)
         {
             noise.m_NoiseProfile = preset;
             noise.m_AmplitudeGain = amp;
             noise.m_FrequencyGain = freq;
 
+            StartCoroutine(StartResetCamInSeconds(time));
+        }
+
+        private IEnumerator StartResetCamInSeconds(float delay)
+        {
+            yield return new WaitForSeconds(delay);
             FalseVCameraParameters();
         }
 

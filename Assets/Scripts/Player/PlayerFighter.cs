@@ -240,7 +240,7 @@ namespace TDH.Player
                     playerCamera.SetCameraNoice(
                         currentSpell.GetNoisePreset(), 
                         currentSpell.GetCamAmplitude(), 
-                        currentSpell.GetCamFrequency());
+                        currentSpell.GetCamFrequency(), 0f);
                     runtimeSpell = currentSpell.Cast(leftHand);
                     break;
                 }

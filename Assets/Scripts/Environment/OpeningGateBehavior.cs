@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TDH.Player;
+using Cinemachine;
 
 namespace TDH.Environment
 {
@@ -10,6 +11,7 @@ namespace TDH.Environment
         [SerializeField] Transform standingPoint = null;
         [SerializeField] Transform firstGateTransformPoint = null, secondGateTransformPoint = null;
         [SerializeField] ParticleSystem[] paticlesOnOpening = null;
+        [SerializeField] NoiseSettings camNoise = null;
 
         [Header("Values")]
         [SerializeField] int openKeyID;
@@ -23,6 +25,7 @@ namespace TDH.Environment
 
         private PlayerMover playerMover = null;
         private PlayerInventory playerInventory = null;
+        private PlayerCinemachineCamera playerCam = null;
 
         private float timeToStopOpening = 0.0f;
 
@@ -32,6 +35,7 @@ namespace TDH.Environment
         {
             playerMover = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMover>();
             playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+            playerCam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCinemachineCamera>();
         }
 
         private void Start() 
@@ -54,6 +58,7 @@ namespace TDH.Environment
             {
                 isOpening = false;
                 OpeningParticlePlay(false);
+                playerCam.SetCameraNoice(playerCam.GetDefaultNoiseSettings(), 0f, 0f, 0f);
             }
         }
 
@@ -83,6 +88,7 @@ namespace TDH.Environment
         private IEnumerator StartOpeningCor()
         {
             yield return new WaitForSeconds(delayAfterActivating);
+            playerCam.SetCameraNoice(camNoise, 1f, 1f, openingTime);
             timeToStopOpening = Time.time + openingTime;
             isOpening = true;
             OpeningParticlePlay(true);
