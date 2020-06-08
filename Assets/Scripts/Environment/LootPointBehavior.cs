@@ -25,7 +25,7 @@ namespace TDH.Environment
 
         private bool isLootTaken = false;
         private Transform lootPoint;
-        private GameObject instantiatedView;
+        private GameObject instantiatedView = null;
 
         private void Awake() 
         {
@@ -36,7 +36,7 @@ namespace TDH.Environment
         void Start()
         {
             takeButton.SetActive(false);
-            if (GetViewForLootToShow() != null)
+            if (lootSO != null)
                 instantiatedView = Instantiate(GetViewForLootToShow(), lootPoint);
             LeanTween.moveY(lootPoint.gameObject, height, upDownSpeed).setLoopPingPong();
             LeanTween.rotateAround(lootPoint.gameObject, Vector3.up, rotateStep, rotateSpeed).setLoopClamp();
@@ -45,9 +45,7 @@ namespace TDH.Environment
         public void SetLoot(ScriptableObject loot)
         {
             if (lootSO != null) return;
-
             lootSO = loot;
-            instantiatedView = Instantiate(GetViewForLootToShow(), lootPoint);
         }
 
         //Called by UI button
@@ -61,9 +59,9 @@ namespace TDH.Environment
 
         private IEnumerator ItemPickedUpCoroutine()
         {
-            yield return new WaitForSeconds(0.5f);
             inventory.TakeLootSO(lootSO);
             takeButton.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
             Destroy(instantiatedView);
             this.GetComponent<ParticleSystem>().Stop();
             yield return new WaitForSeconds(secondsToDestroy);
